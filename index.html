@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Legado Vivo - Experiencia Inmersiva de Paternidad</title>
-    <link rel="icon" href="https://static.wixstatic.com/ficons/af3a4a_6173983436864e2db944f72f25def6ec~mv2.ico" type="image/x-icon">
+    <link rel="icon" href="https://static.wixstatic.com/ficons/af3a4a_6173983436864e2db944f72f25def6ec~mv2.ico"
+        type="image/x-icon">
 
     <meta name="description"
         content="Una experiencia inmersiva para sentir la paternidad que nunca fue vivida usando XR, IA emocional, háptica avanzada y BCI">
@@ -195,11 +196,15 @@
             border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            /* Important: Set a height or use padding-bottom for aspect ratio */
+            /* For a 16:9 aspect ratio, you could use padding-bottom: 56.25%; and height: 0; */
+            /* But given your placeholder has a fixed height, setting that height here is simpler. */
+            height: 450px; /* Ensures the container has height after placeholder is removed */
         }
 
         .video-placeholder {
             width: 100%;
-            height: 450px;
+            height: 100%; /* Now takes 100% of video-container height */
             background: linear-gradient(45deg, #1a1a3e, #2d1b69);
             display: flex;
             align-items: center;
@@ -207,7 +212,9 @@
             color: #13c5db;
             font-size: 4rem;
             border-radius: 20px;
-            position: relative;
+            position: absolute; /* Position absolute relative to video-container */
+            top: 0;
+            left: 0;
             cursor: pointer;
             transition: all 0.3s ease;
         }
@@ -246,7 +253,6 @@
             transform: translateY(50px);
             transition: all 0.8s ease;
             text-align: center;
-            /* Añade esta línea para centrar el botón */
         }
 
         .section.visible {
@@ -427,8 +433,8 @@
                 padding: 2rem;
             }
 
-            .video-placeholder {
-                height: 300px;
+            .video-container {
+                height: 300px; /* Adjust height for smaller screens */
             }
         }
 
@@ -510,6 +516,7 @@
     <section class="video-section">
         <div class="container">
             <div class="video-container">
+                <!-- El video se cargará aquí al hacer clic -->
                 <div class="video-placeholder" onclick="playVideo()">
                     <div class="play-button">▶</div>
                     <div
@@ -665,26 +672,37 @@
             }
         }
 
-        // Video placeholder interaction
-        function playVideo() {
-            const videoPlaceholder = document.querySelector('.video-placeholder');
-            videoPlaceholder.innerHTML = `
-                <div style="color: #13c5db; font-size: 1.5rem; text-align: center; padding: 2rem;">
-                    <div style="margin-bottom: 1rem;">🎬</div>
-                    <div>Video de demostración próximamente</div>
-                    <div style="font-size: 1rem; opacity: 0.7; margin-top: 1rem;">
-                        Experiencia interactiva en desarrollo
-                    </div>
-                </div>
-            `;
+        // MODIFICACIÓN IMPORTANTE AQUÍ: Video placeholder interaction
+       // MODIFICACIÓN IMPORTANTE AQUÍ: Video placeholder interaction
+function playVideo() {
+    const videoContainer = document.querySelector('.video-container');
+    const videoPlaceholder = document.querySelector('.video-placeholder');
 
-            // Add glow effect
-            videoPlaceholder.style.boxShadow = '0 0 50px rgba(19, 197, 219, 0.5)';
+    // Define la URL de tu video aquí.
+    // Para YouTube, usa el formato de inserción (embed).
+    // Reemplaza 'YOUR_YOUTUBE_VIDEO_ID' con el ID real de tu video.
+    // Ejemplo: Si tu video es https://www.youtube.com/watch?v=dQw4w9WgXcQ, el ID es dQw4w9WgXcQ
+    const videoUrl = 'https://www.youtube.com/embed/DNJ6KILDQJI?autoplay=1&rel=0&modestbranding=1'; // <--- ¡Esta es la URL correcta para embed!
 
-            setTimeout(() => {
-                videoPlaceholder.style.boxShadow = '0 20px 60px rgba(0, 0, 0, 0.5)';
-            }, 2000);
-        }
+    // Crea el elemento iframe
+    const iframe = document.createElement('iframe');
+    iframe.src = videoUrl;
+    iframe.setAttribute('frameborder', '0');
+    iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+    iframe.setAttribute('allowfullscreen', '');
+    iframe.style.width = '100%';
+    iframe.style.height = '100%';
+    iframe.style.position = 'absolute'; /* Posiciona el iframe sobre el contenedor */
+    iframe.style.top = '0';
+    iframe.style.left = '0';
+    // El border-radius y el box-shadow los hereda del .video-container gracias a overflow: hidden
+
+    // Elimina el placeholder
+    videoPlaceholder.remove();
+
+    // Añade el iframe al contenedor de video
+    videoContainer.appendChild(iframe);
+}
 
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
