@@ -517,7 +517,7 @@
         <div class="container">
             <div class="video-container">
                 <!-- El video se cargará aquí al hacer clic -->
-                <div class="video-placeholder" onclick="playVideo()">
+                <div class="video-placeholder" onclick="playVideo('RBE-C-b86-Y')"> <!-- <-- Pasamos el ID del video aquí -->
                     <div class="play-button">▶</div>
                     <div
                         style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); font-size: 1.2rem; color: rgba(255,255,255,0.8); width: 100%; text-align: center;">
@@ -672,37 +672,33 @@
             }
         }
 
-        // MODIFICACIÓN IMPORTANTE AQUÍ: Video placeholder interaction
-       // MODIFICACIÓN IMPORTANTE AQUÍ: Video placeholder interaction
-function playVideo() {
-    const videoContainer = document.querySelector('.video-container');
-    const videoPlaceholder = document.querySelector('.video-placeholder');
+        // MODIFICACIÓN CRÍTICA AQUÍ: Video placeholder interaction
+        function playVideo(videoId) { // Ahora la función acepta el ID del video como argumento
+            const videoContainer = document.querySelector('.video-container');
+            const videoPlaceholder = document.querySelector('.video-placeholder');
 
-    // Define la URL de tu video aquí.
-    // Para YouTube, usa el formato de inserción (embed).
-    // Reemplaza 'YOUR_YOUTUBE_VIDEO_ID' con el ID real de tu video.
-    // Ejemplo: Si tu video es https://www.youtube.com/watch?v=dQw4w9WgXcQ, el ID es dQw4w9WgXcQ
-    const videoUrl = 'https://youtu.be/RBE-C-b86-Y?si=jXQydM91guPghT0v'; // <--- ¡Esta es la URL correcta para embed!
+            // Construye la URL de inserción de YouTube con el ID proporcionado
+            // y los parámetros de reproducción automática y sin videos relacionados.
+            const embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`; 
 
-    // Crea el elemento iframe
-    const iframe = document.createElement('iframe');
-    iframe.src = videoUrl;
-    iframe.setAttribute('frameborder', '0');
-    iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
-    iframe.setAttribute('allowfullscreen', '');
-    iframe.style.width = '100%';
-    iframe.style.height = '100%';
-    iframe.style.position = 'absolute'; /* Posiciona el iframe sobre el contenedor */
-    iframe.style.top = '0';
-    iframe.style.left = '0';
-    // El border-radius y el box-shadow los hereda del .video-container gracias a overflow: hidden
+            // Crea el elemento iframe
+            const iframe = document.createElement('iframe');
+            iframe.src = embedUrl;
+            iframe.setAttribute('frameborder', '0');
+            iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+            iframe.setAttribute('allowfullscreen', '');
+            iframe.style.width = '100%';
+            iframe.style.height = '100%';
+            iframe.style.position = 'absolute'; 
+            iframe.style.top = '0';
+            iframe.style.left = '0';
 
-    // Elimina el placeholder
-    videoPlaceholder.remove();
+            // Elimina el placeholder
+            videoPlaceholder.remove();
 
-    // Añade el iframe al contenedor de video
-    videoContainer.appendChild(iframe);
-}
+            // Añade el iframe al contenedor de video
+            videoContainer.appendChild(iframe);
+        }
 
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
