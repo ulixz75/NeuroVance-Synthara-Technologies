@@ -45,6 +45,7 @@
             text-align: center;
             position: relative;
             overflow: hidden;
+            /* Se quitó el padding-top que se había añadido para el header del logo */
         }
 
         .hero::before {
@@ -116,7 +117,7 @@
             border-radius: 50%;
             background: linear-gradient(45deg, #13c5db, #ff77c6);
             padding: 3px;
-            animation: pulse 2s infinite;
+            animation: pulse 2s infinite; /* Animación de pulso ya existente */
         }
 
         @keyframes pulse {
@@ -141,9 +142,31 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 4rem;
-            color: #13c5db;
+            overflow: hidden; /* Asegura que la imagen no se desborde del círculo */
+            /* Se quitó font-size y color, ya no son necesarios para una imagen */
         }
+
+        .hero-avatar-inner img.logo-inside-avatar {
+            width: 80%; /* Ajusta el tamaño del logo dentro del círculo */
+            height: auto;
+            object-fit: contain; /* Asegura que el logo quepa sin distorsionarse */
+            animation: logoSpinPulse 3s ease-in-out infinite alternate; /* Nueva animación para el logo */
+            filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5)); /* Sombra sutil para el logo */
+        }
+
+        /* Nueva animación para el logo dentro del avatar */
+        @keyframes logoSpinPulse {
+            0% {
+                transform: scale(1) rotate(0deg);
+            }
+            50% {
+                transform: scale(1.05) rotate(3deg); /* Pequeño zoom y rotación */
+            }
+            100% {
+                transform: scale(1) rotate(0deg);
+            }
+        }
+
 
         .cta-button {
             display: inline-block;
@@ -196,15 +219,12 @@
             border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-            /* Important: Set a height or use padding-bottom for aspect ratio */
-            /* For a 16:9 aspect ratio, you could use padding-bottom: 56.25%; and height: 0; */
-            /* But given your placeholder has a fixed height, setting that height here is simpler. */
-            height: 450px; /* Ensures the container has height after placeholder is removed */
+            height: 450px;
         }
 
         .video-placeholder {
             width: 100%;
-            height: 100%; /* Now takes 100% of video-container height */
+            height: 100%;
             background: linear-gradient(45deg, #1a1a3e, #2d1b69);
             display: flex;
             align-items: center;
@@ -212,7 +232,7 @@
             color: #13c5db;
             font-size: 4rem;
             border-radius: 20px;
-            position: absolute; /* Position absolute relative to video-container */
+            position: absolute;
             top: 0;
             left: 0;
             cursor: pointer;
@@ -436,6 +456,14 @@
             .video-container {
                 height: 300px; /* Adjust height for smaller screens */
             }
+
+            .hero-avatar {
+                width: 150px; /* Reduce tamaño del avatar en móviles */
+                height: 150px;
+            }
+            .hero-avatar-inner img.logo-inside-avatar {
+                width: 70%; /* Ajusta el tamaño del logo dentro del círculo en móviles */
+            }
         }
 
         /* Scroll Progress Bar */
@@ -502,7 +530,7 @@
             <div class="hero-content">
                 <div class="hero-avatar">
                     <div class="hero-avatar-inner">
-                        👥
+                        <img src="https://static.wixstatic.com/media/af3a4a_e11177e185b147a9a3f5b90233c5c782~mv2.png" alt="Legado Vivo Logo" class="logo-inside-avatar">
                     </div>
                 </div>
                 <h1>LEGADO VIVO</h1>
