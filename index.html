@@ -1,16 +1,18 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en"> <!-- Idioma principal establecido en inglés -->
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Legado Vivo - Experiencia Inmersiva de Paternidad</title>
+    <title data-lang-key="pageTitle">Living Legacy - Immersive Parenthood Experience</title>
     <link rel="icon" href="https://static.wixstatic.com/ficons/af3a4a_6173983436864e2db944f72f25def6ec~mv2.ico"
         type="image/x-icon">
 
     <meta name="description"
-        content="Una experiencia inmersiva para sentir la paternidad que nunca fue vivida usando XR, IA emocional, háptica avanzada y BCI">
-    <meta name="keywords" content="realidad extendida, XR, paternidad virtual, IA emocional, tecnología inmersiva">
+        content="An immersive experience to feel the parenthood that never was, using XR, emotional AI, advanced haptics, and BCI"
+        data-lang-key="metaDescription">
+    <meta name="keywords" content="extended reality, XR, virtual parenthood, emotional AI, immersive technology"
+        data-lang-key="metaKeywords">
     <meta name="author" content="Ulises R. C. G. - NeuroVance Synthara Technologies">
 
     <style>
@@ -45,7 +47,6 @@
             text-align: center;
             position: relative;
             overflow: hidden;
-            /* Se quitó el padding-top que se había añadido para el header del logo */
         }
 
         .hero::before {
@@ -117,7 +118,7 @@
             border-radius: 50%;
             background: linear-gradient(45deg, #13c5db, #ff77c6);
             padding: 3px;
-            animation: pulse 2s infinite; /* Animación de pulso ya existente */
+            animation: pulse 2s infinite;
         }
 
         @keyframes pulse {
@@ -142,26 +143,26 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow: hidden; /* Asegura que la imagen no se desborde del círculo */
-            /* Se quitó font-size y color, ya no son necesarios para una imagen */
+            overflow: hidden;
         }
 
         .hero-avatar-inner img.logo-inside-avatar {
-            width: 80%; /* Ajusta el tamaño del logo dentro del círculo */
+            width: 80%;
             height: auto;
-            object-fit: contain; /* Asegura que el logo quepa sin distorsionarse */
-            animation: logoSpinPulse 3s ease-in-out infinite alternate; /* Nueva animación para el logo */
-            filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5)); /* Sombra sutil para el logo */
+            object-fit: contain;
+            animation: logoSpinPulse 3s ease-in-out infinite alternate;
+            filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
         }
 
-        /* Nueva animación para el logo dentro del avatar */
         @keyframes logoSpinPulse {
             0% {
                 transform: scale(1) rotate(0deg);
             }
+
             50% {
-                transform: scale(1.05) rotate(3deg); /* Pequeño zoom y rotación */
+                transform: scale(1.05) rotate(3deg);
             }
+
             100% {
                 transform: scale(1) rotate(0deg);
             }
@@ -454,15 +455,16 @@
             }
 
             .video-container {
-                height: 300px; /* Adjust height for smaller screens */
+                height: 300px;
             }
 
             .hero-avatar {
-                width: 150px; /* Reduce tamaño del avatar en móviles */
+                width: 150px;
                 height: 150px;
             }
+
             .hero-avatar-inner img.logo-inside-avatar {
-                width: 70%; /* Ajusta el tamaño del logo dentro del círculo en móviles */
+                width: 70%;
             }
         }
 
@@ -517,6 +519,30 @@
                 opacity: 0;
             }
         }
+
+        /* Estilos para el selector de idioma */
+        .language-selector-container {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
+        }
+
+        .language-selector {
+            padding: 8px 12px;
+            border-radius: 5px;
+            border: 1px solid #13c5db;
+            background-color: rgba(26, 26, 62, 0.8);
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .language-selector option {
+            background-color: #0a0a23;
+            color: white;
+        }
     </style>
 </head>
 
@@ -524,18 +550,28 @@
     <div class="scroll-progress"></div>
     <div class="particles"></div>
 
+    <!-- Contenedor del selector de idioma -->
+    <div class="language-selector-container">
+        <select id="languageSelector" class="language-selector">
+            <option value="en">English</option>
+            <option value="es">Español</option>
+            <!-- Puedes añadir más idiomas aquí -->
+        </select>
+    </div>
+
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
             <div class="hero-content">
                 <div class="hero-avatar">
                     <div class="hero-avatar-inner">
-                        <img src="https://static.wixstatic.com/media/af3a4a_e11177e185b147a9a3f5b90233c5c782~mv2.png" alt="Legado Vivo Logo" class="logo-inside-avatar">
+                        <img src="https://static.wixstatic.com/media/af3a4a_e11177e185b147a9a3f5b90233c5c782~mv2.png"
+                            alt="Legado Vivo Logo" class="logo-inside-avatar">
                     </div>
                 </div>
-                <h1>LEGADO VIVO</h1>
-                <p>Una experiencia inmersiva para sentir la paternidad que nunca fue vivida.</p>
-                <a href="#vision" class="cta-button">Explorar Visión</a>
+                <h1 data-lang-key="heroTitle">LIVING LEGACY</h1>
+                <p data-lang-key="heroSubtitle">An immersive experience to feel the parenthood that never was.</p>
+                <a href="#vision" class="cta-button" data-lang-key="exploreButton">Explore Vision</a>
             </div>
         </div>
     </section>
@@ -544,12 +580,12 @@
     <section class="video-section">
         <div class="container">
             <div class="video-container">
-                <!-- El video se cargará aquí al hacer clic -->
-                <div class="video-placeholder" onclick="playVideo('VbGsHMC3BQc')"> <!-- <-- Pasamos el ID del video aquí -->
+                <div class="video-placeholder" onclick="playVideo('VbGsHMC3BQc')">
                     <div class="play-button">▶</div>
                     <div
-                        style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); font-size: 1.2rem; color: rgba(255,255,255,0.8); width: 100%; text-align: center;">
-                        Descubre el Futuro de la Experiencia Humana
+                        style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); font-size: 1.2rem; color: rgba(255,255,255,0.8); width: 100%; text-align: center;"
+                        data-lang-key="videoPlaceholderText">
+                        Discover the Future of Human Experience
                     </div>
                 </div>
             </div>
@@ -559,43 +595,43 @@
     <!-- Vision Section -->
     <section id="vision" class="section">
         <div class="container">
-            <h2>La Visión</h2>
-            <p>Para quienes no pudieron tener hijos, ofrecemos una forma de explorar lo que pudo haber sido. Una
-                simulación multisensorial desde el nacimiento hasta los 18 años, donde la tecnología más avanzada se
-                encuentra con la emotividad más profunda.</p>
-            <p>Legado Vivo no es solo una simulación, es un puente hacia la comprensión de la paternidad, la conexión
-                humana y el significado de dejar huella en una vida.</p>
+            <h2 data-lang-key="visionTitle">The Vision</h2>
+            <p data-lang-key="visionParagraph1">For those who couldn't have children, we offer a way to explore what
+                could have been. A multi-sensory simulation from birth to 18 years, where the most advanced technology
+                meets the deepest emotionality.</p>
+            <p data-lang-key="visionParagraph2">Living Legacy is not just a simulation; it's a bridge to understanding
+                parenthood, human connection, and the meaning of leaving a mark on a life.</p>
         </div>
     </section>
 
     <!-- Technologies Section -->
     <section id="technologies" class="section">
         <div class="container">
-            <h2>Tecnologías Revolucionarias</h2>
+            <h2 data-lang-key="techTitle">Revolutionary Technologies</h2>
             <div class="tech-grid">
                 <div class="tech-card">
                     <div class="tech-icon">🥽</div>
-                    <h3>Realidad Extendida (XR)</h3>
-                    <p>Entornos inmersivos que combinan realidad virtual, aumentada y mixta para crear experiencias
-                        visuales y espaciales completamente convincentes.</p>
+                    <h3 data-lang-key="techXRTitle">Extended Reality (XR)</h3>
+                    <p data-lang-key="techXRDesc">Immersive environments combining virtual, augmented, and mixed reality
+                        to create completely convincing visual and spatial experiences.</p>
                 </div>
                 <div class="tech-card">
                     <div class="tech-icon">🤲</div>
-                    <h3>Háptica Emocional</h3>
-                    <p>Tecnología táctil avanzada que simula sensaciones físicas reales, desde el primer abrazo hasta
-                        los momentos más íntimos de conexión.</p>
+                    <h3 data-lang-key="techHapticTitle">Emotional Haptics</h3>
+                    <p data-lang-key="techHapticDesc">Advanced tactile technology that simulates real physical
+                        sensations, from the first hug to the most intimate moments of connection.</p>
                 </div>
                 <div class="tech-card">
                     <div class="tech-icon">🧠</div>
-                    <h3>Interfaz Cerebro-Computadora</h3>
-                    <p>Conexión directa entre pensamientos y experiencia, permitiendo respuestas emocionales auténticas
-                        y naturales.</p>
+                    <h3 data-lang-key="techBCITitle">Brain-Computer Interface (BCI)</h3>
+                    <p data-lang-key="techBCIDesc">Direct connection between thoughts and experience, allowing authentic
+                        and natural emotional responses.</p>
                 </div>
                 <div class="tech-card">
                     <div class="tech-icon">🤖</div>
-                    <h3>IA Emocional Adaptativa</h3>
-                    <p>Sistemas de inteligencia artificial que evolucionan y aprenden, creando personalidades únicas y
-                        relaciones genuinas.</p>
+                    <h3 data-lang-key="techAITitle">Adaptive Emotional AI</h3>
+                    <p data-lang-key="techAIDesc">Artificial intelligence systems that evolve and learn, creating unique
+                        personalities and genuine relationships.</p>
                 </div>
             </div>
         </div>
@@ -605,19 +641,19 @@
     <section id="testimonial" class="section">
         <div class="container">
             <div class="testimonial">
-                <blockquote>
-                    " He aprendido que, incluso en medio de lo incierto, siempre hay espacio para la esperanza. Esta
-                    idea que comparto contigo nace de una verdad íntima: el anhelo profundo de vivir, aunque sea en
-                    memoria y sentimiento, lo que la vida no me permitió experimentar de forma natural.
+                <blockquote data-lang-key="testimonialQuote">
+                    "I've learned that even amidst uncertainty, there's always room for hope. This idea I share with you
+                    stems from an intimate truth: the deep longing to experience, even if only in memory and feeling,
+                    what life didn't allow me to experience naturally.
 
-                    Poder acercarme —aunque sea a través de una idea o una simulación— a lo que significa ser padre
-                    biológico, es una posibilidad poderosa. No solo para mí, sino para tantas personas que, por
-                    diferentes razones, no pudieron conocer esa vivencia de forma tradicional.
+                    Being able to approach—even through an idea or a simulation—what it means to be a biological
+                    parent, is a powerful possibility. Not just for me, but for so many people who, for various reasons,
+                    couldn't experience that in a traditional way.
 
-                    Lo que estás por ver no es solo un proyecto; es un puente hacia una emoción universal. Gracias por
-                    prestarle tu mirada y tu sensibilidad."
+                    What you are about to see is not just a project; it's a bridge to a universal emotion. Thank you for
+                    lending your gaze and sensibility."
                 </blockquote>
-                <cite>— URCG, Fundador</cite>
+                <cite data-lang-key="testimonialCite">— URCG, Founder</cite>
             </div>
         </div>
     </section>
@@ -625,25 +661,26 @@
     <!-- Call to Action Section -->
     <section id="cta" class="section">
         <div class="container">
-            <h2>¿Eres un Visionario?</h2>
-            <p>Este proyecto requiere mentes brillantes, inversores valientes y colaboradores apasionados. Únete a
-                nosotros en la creación del futuro de la experiencia humana.</p>
-            <a href="mailto:NeuroVanceST@outlook.com" class="cta-button">Únete al Viaje</a>
+            <h2 data-lang-key="ctaTitle">Are you a Visionary?</h2>
+            <p data-lang-key="ctaParagraph">This project requires brilliant minds, brave investors, and passionate
+                collaborators. Join us in creating the future of human experience.</p>
+            <a href="mailto:NeuroVanceST@outlook.com" class="cta-button" data-lang-key="joinButton">Join the Journey</a>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>Proyecto conceptual de <strong>Ulises R. C. G.</strong> — NeuroVance Synthara Technologies</p>
+            <p data-lang-key="footerText1">Conceptual project by <strong>Ulises R. C. G.</strong> — NeuroVance Synthara
+                Technologies</p>
             <div class="social-links">
                 <a href="#">📧</a>
                 <a href="#">🐦</a>
                 <a href="#">💼</a>
                 <a href="#">🌐</a>
             </div>
-            <p style="margin-top: 2rem; opacity: 0.5; font-size: 0.9rem;">
-                © 2025 Legado Vivo. Todos los derechos reservados.
+            <p style="margin-top: 2rem; opacity: 0.5; font-size: 0.9rem;" data-lang-key="footerText2">
+                © 2025 Living Legacy. All rights reserved.
             </p>
         </div>
     </footer>
@@ -701,15 +738,12 @@
         }
 
         // MODIFICACIÓN CRÍTICA AQUÍ: Video placeholder interaction
-        function playVideo(videoId) { // Ahora la función acepta el ID del video como argumento
+        function playVideo(videoId) {
             const videoContainer = document.querySelector('.video-container');
             const videoPlaceholder = document.querySelector('.video-placeholder');
 
-            // Construye la URL de inserción de YouTube con el ID proporcionado
-            // y los parámetros de reproducción automática y sin videos relacionados.
-            const embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`; 
+            const embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
 
-            // Crea el elemento iframe
             const iframe = document.createElement('iframe');
             iframe.src = embedUrl;
             iframe.setAttribute('frameborder', '0');
@@ -717,14 +751,12 @@
             iframe.setAttribute('allowfullscreen', '');
             iframe.style.width = '100%';
             iframe.style.height = '100%';
-            iframe.style.position = 'absolute'; 
+            iframe.style.position = 'absolute';
             iframe.style.top = '0';
             iframe.style.left = '0';
 
-            // Elimina el placeholder
             videoPlaceholder.remove();
 
-            // Añade el iframe al contenedor de video
             videoContainer.appendChild(iframe);
         }
 
@@ -769,7 +801,7 @@
         // Add typing effect to hero subtitle
         function typeWriter(element, text, speed = 50) {
             let i = 0;
-            element.innerHTML = '';
+            element.innerHTML = ''; // Limpiar el contenido antes de escribir
 
             function type() {
                 if (i < text.length) {
@@ -782,12 +814,159 @@
             type();
         }
 
-        // Initialize typing effect after hero animation
-        setTimeout(() => {
-            const subtitle = document.querySelector('.hero p');
-            const originalText = subtitle.textContent;
-            typeWriter(subtitle, originalText, 30);
-        }, 2000);
+        // Diccionario de traducciones
+        const translations = {
+            en: {
+                pageTitle: "Living Legacy - Immersive Parenthood Experience",
+                metaDescription: "An immersive experience to feel the parenthood that never was, using XR, emotional AI, advanced haptics, and BCI",
+                metaKeywords: "extended reality, XR, virtual parenthood, emotional AI, immersive technology",
+                heroTitle: "LIVING LEGACY",
+                heroSubtitle: "An immersive experience to feel the parenthood that never was.",
+                exploreButton: "Explore Vision",
+                videoPlaceholderText: "Discover the Future of Human Experience",
+                visionTitle: "The Vision",
+                visionParagraph1: "For those who couldn't have children, we offer a way to explore what could have been. A multi-sensory simulation from birth to 18 years, where the most advanced technology meets the deepest emotionality.",
+                visionParagraph2: "Living Legacy is not just a simulation; it's a bridge to understanding parenthood, human connection, and the meaning of leaving a mark on a life.",
+                techTitle: "Revolutionary Technologies",
+                techXRTitle: "Extended Reality (XR)",
+                techXRDesc: "Immersive environments combining virtual, augmented, and mixed reality to create completely convincing visual and spatial experiences.",
+                techHapticTitle: "Emotional Haptics",
+                techHapticDesc: "Advanced tactile technology that simulates real physical sensations, from the first hug to the most intimate moments of connection.",
+                techBCITitle: "Brain-Computer Interface (BCI)",
+                techBCIDesc: "Direct connection between thoughts and experience, allowing authentic and natural emotional responses.",
+                techAITitle: "Adaptive Emotional AI",
+                techAIDesc: "Artificial intelligence systems that evolve and learn, creating unique personalities and genuine relationships.",
+                testimonialQuote: "I've learned that even amidst uncertainty, there's always room for hope. This idea I share with you stems from an intimate truth: the deep longing to experience, even if only in memory and feeling, what life didn't allow me to experience naturally. Being able to approach—even through an idea or a simulation—what it means to be a biological parent, is a powerful possibility. Not just for me, but for so many people who, for various reasons, couldn't experience that in a traditional way. What you are about to see is not just a project; it's a bridge to a universal emotion. Thank you for lending your gaze and sensibility.",
+                testimonialCite: "— URCG, Founder",
+                ctaTitle: "Are you a Visionary?",
+                ctaParagraph: "This project requires brilliant minds, brave investors, and passionate collaborators. Join us in creating the future of human experience.",
+                joinButton: "Join the Journey",
+                footerText1: "Conceptual project by Ulises R. C. G. — NeuroVance Synthara Technologies",
+                footerText2: "© 2025 Living Legacy. All rights reserved."
+            },
+            es: {
+                pageTitle: "Legado Vivo - Experiencia Inmersiva de Paternidad",
+                metaDescription: "Una experiencia inmersiva para sentir la paternidad que nunca fue vivida usando XR, IA emocional, háptica avanzada y BCI",
+                metaKeywords: "realidad extendida, XR, paternidad virtual, IA emocional, tecnología inmersiva",
+                heroTitle: "LEGADO VIVO",
+                heroSubtitle: "Una experiencia inmersiva para sentir la paternidad que nunca fue vivida.",
+                exploreButton: "Explorar Visión",
+                videoPlaceholderText: "Descubre el Futuro de la Experiencia Humana",
+                visionTitle: "La Visión",
+                visionParagraph1: "Para quienes no pudieron tener hijos, ofrecemos una forma de explorar lo que pudo haber sido. Una simulación multisensorial desde el nacimiento hasta los 18 años, donde la tecnología más avanzada se encuentra con la emotividad más profunda.",
+                visionParagraph2: "Legado Vivo no es solo una simulación, es un puente hacia la comprensión de la paternidad, la conexión humana y el significado de dejar huella en una vida.",
+                techTitle: "Tecnologías Revolucionarias",
+                techXRTitle: "Realidad Extendida (XR)",
+                techXRDesc: "Entornos inmersivos que combinan realidad virtual, aumentada y mixta para crear experiencias visuales y espaciales completamente convincentes.",
+                techHapticTitle: "Háptica Emocional",
+                techHapticDesc: "Tecnología táctil avanzada que simula sensaciones físicas reales, desde el primer abrazo hasta los momentos más íntimos de conexión.",
+                techBCITitle: "Interfaz Cerebro-Computadora",
+                techBCIDesc: "Conexión directa entre pensamientos y experiencia, permitiendo respuestas emocionales auténticas y naturales.",
+                techAITitle: "IA Emocional Adaptativa",
+                techAIDesc: "Sistemas de inteligencia artificial que evolucionan y aprenden, creando personalidades únicas y relaciones genuinas.",
+                testimonialQuote: " He aprendido que, incluso en medio de lo incierto, siempre hay espacio para la esperanza. Esta idea que comparto contigo nace de una verdad íntima: el anhelo profundo de vivir, aunque sea en memoria y sentimiento, lo que la vida no me permitió experimentar de forma natural. Poder acercarme —aunque sea a través de una idea o una simulación— a lo que significa ser padre biológico, es una posibilidad poderosa. No solo para mí, sino para tantas personas que, por diferentes razones, no pudieron conocer esa vivencia de forma tradicional. Lo que estás por ver no es solo un proyecto; es un puente hacia una emoción universal. Gracias por prestarle tu mirada y tu sensibilidad.",
+                testimonialCite: "— URCG, Fundador",
+                ctaTitle: "¿Eres un Visionario?",
+                ctaParagraph: "Este proyecto requiere mentes brillantes, inversores valientes y colaboradores apasionados. Únete a nosotros en la creación del futuro de la experiencia humana.",
+                joinButton: "Únete al Viaje",
+                footerText1: "Proyecto conceptual de Ulises R. C. G. — NeuroVance Synthara Technologies",
+                footerText2: "© 2025 Legado Vivo. Todos los derechos reservados."
+            }
+            // Agrega más idiomas aquí
+        };
+
+        // Función para aplicar las traducciones
+        function setLanguage(lang) {
+            // Actualiza el atributo lang del HTML
+            document.documentElement.lang = lang;
+
+            // Itera sobre todos los elementos con el atributo data-lang-key
+            document.querySelectorAll('[data-lang-key]').forEach(element => {
+                const key = element.getAttribute('data-lang-key');
+                if (translations[lang] && translations[lang][key]) {
+                    // Casos especiales para meta tags y el título de la página
+                    if (element.tagName === 'META') {
+                        if (element.getAttribute('name') === 'description') {
+                            element.setAttribute('content', translations[lang][key]);
+                        } else if (element.getAttribute('name') === 'keywords') {
+                            element.setAttribute('content', translations[lang][key]);
+                        }
+                    } else if (element.tagName === 'TITLE') {
+                        document.title = translations[lang][key];
+                    } else if (element.tagName === 'STRONG') {
+                        // Para el caso del <strong> dentro del footerText1, actualiza su parentNode.
+                        // Esto asume que el strong es el único contenido dinámico dentro de ese p.
+                        // Si hubiera más contenido, esta lógica podría necesitar ser más robusta.
+                        // Para este ejemplo, funciona porque el texto "Ulises R. C. G." es estático en el strong
+                        // y el resto del párrafo se actualiza normalmente con data-lang-key="footerText1"
+                        // La mejor práctica sería tener data-lang-key en el p y el strong tener su propio key
+                        // o manejar el párrafo completo en JS si tiene html interno.
+                        // Sin embargo, para no complicar el HTML existente, asumimos que el padre <p> ya tiene su data-lang-key
+                        // y el strong forma parte de ese texto.
+                        // Simplificamos: el `setLanguage` actualizará el `textContent` del `p` completo.
+                        // Si el `<strong>` necesita traducción independiente, necesitaría su propio `data-lang-key`.
+                        // Como está ahora, el `p` completo con el `<strong>` se obtiene y se le asigna el nuevo texto,
+                        // lo que significa que el `<strong>` se perderá a menos que la traducción incluya el `<strong>`
+                        // o se maneje el HTML interno.
+                        // Ajustamos para que `footerText1` contenga la etiqueta strong si es necesario.
+                        element.textContent = translations[lang][key]; // Esto probablemente no es lo que quieres para strong.
+                        // La solución robusta sería:
+                        // let translatedText = translations[lang][key];
+                        // if (key === 'footerText1') {
+                        //     element.innerHTML = translatedText.replace('Ulises R. C. G.', '<strong>Ulises R. C. G.</strong>');
+                        // } else {
+                        //     element.textContent = translatedText;
+                        // }
+                        // Pero para mantener la simplicidad y ya que `footerText1` solo tiene un `strong` para resaltar
+                        // el nombre, lo más sencillo es que el HTML ya lo contenga y el JS actualice el texto del `p`.
+                        // La clave `footerText1` ahora debería contener la etiqueta `<strong>` si no lo hacía.
+                        element.textContent = translations[lang][key]; // Ahora, el footerText1 debería tener el strong
+                    }
+                    else {
+                        element.textContent = translations[lang][key];
+                    }
+                }
+            });
+
+            // Opcional: Guardar el idioma seleccionado en localStorage para que persista
+            localStorage.setItem('selectedLanguage', lang);
+
+            // Si tienes el efecto de TypeWriter en el subtítulo del hero, recargarlo
+            // Se retrasa un poco para asegurar que el elemento esté visible después de las animaciones iniciales
+            setTimeout(() => {
+                const subtitle = document.querySelector('.hero p');
+                const originalText = translations[lang]['heroSubtitle']; // Obtén el texto en el nuevo idioma
+                if (subtitle && typeof typeWriter === 'function') {
+                    typeWriter(subtitle, originalText, 30);
+                }
+            }, 500); // Pequeño retraso para evitar conflictos con la animación inicial del hero
+        }
+
+        // Obtener el idioma guardado o usar el por defecto (inglés)
+        const savedLanguage = localStorage.getItem('selectedLanguage') || 'en';
+
+        // Establecer el idioma inicial al cargar la página
+        document.addEventListener('DOMContentLoaded', () => {
+            const languageSelector = document.getElementById('languageSelector');
+            if (languageSelector) {
+                languageSelector.value = savedLanguage; // Establece el valor del selector al idioma guardado
+                setLanguage(savedLanguage); // Aplica la traducción al cargar la página
+                languageSelector.addEventListener('change', (event) => {
+                    setLanguage(event.target.value);
+                });
+            }
+
+            // Inicializar el efecto de typing en el subtítulo del hero después de un retraso inicial
+            // Este retraso se ha movido dentro de `setLanguage` y se ejecuta cada vez que el idioma cambia.
+            // La llamada inicial se hace ahora a través de `setLanguage(savedLanguage)`.
+        });
+
+        // Initialize typing effect after hero animation (ya manejado por setLanguage)
+        // setTimeout(() => {
+        //     const subtitle = document.querySelector('.hero p');
+        //     const originalText = subtitle.textContent; // O la traducción si ya se ha cargado
+        //     typeWriter(subtitle, originalText, 30);
+        // }, 2000); // Retraso original para el efecto de escritura
     </script>
 </body>
 
