@@ -397,6 +397,85 @@
             color: #ff77c6;
             font-weight: 600;
         }
+            /* --- ESTILOS PARA EL CARRUSEL DE IMÁGENES --- */
+        .gallery-container {
+            max-width: 1000px;
+            /* Ajusta el ancho máximo del carrusel */
+            margin: 0 auto;
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(19, 197, 219, 0.2);
+        }
+
+
+        .gallery-slider {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+
+        .gallery-slide {
+            min-width: 100%;
+            position: relative;
+        }
+
+
+        .gallery-slide img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 20px;
+        }
+
+
+        .gallery-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 1rem;
+            z-index: 10;
+        }
+
+
+        .gallery-button {
+            background: linear-gradient(45deg, #13c5db, #ff77c6);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            opacity: 0.7;
+        }
+
+
+        .gallery-button:hover {
+            opacity: 1;
+            transform: scale(1.1);
+            box-shadow: 0 10px 25px rgba(19, 197, 219, 0.4);
+        }
+
+        #gallery p {
+            font-size: 1.1rem;
+            opacity: 0.8;
+            font-style: italic;
+            max-width: 700px;
+        }
+
+        /* --- FIN DE ESTILOS PARA EL CARRUSEL --- */
 
         /* Footer */
         .footer {
@@ -468,6 +547,11 @@
                 width: 70%;
             }
         }
+        .gallery-button {
+                width: 40px;
+                height: 40px;
+                font-size: 1.5rem;
+            }
 
         /* Scroll Progress Bar */
         .scroll-progress {
@@ -583,8 +667,7 @@
             <div class="video-container">
                 <div class="video-placeholder" onclick="playVideo('VbGsHMC3BQc')">
                     <div class="play-button">▶</div>
-                    <div
-                        style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); font-size: 1.2rem; color: rgba(255,255,255,0.8); width: 100%; text-align: center;"
+                    <div style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); font-size: 1.2rem; color: rgba(255,255,255,0.8); width: 100%; text-align: center;"
                         data-lang-key="videoPlaceholderText">
                         Discover the Future of Human Experience
                     </div>
@@ -658,6 +741,59 @@
             </div>
         </div>
     </section>
+    <!-- ======== NUEVA SECCIÓN DE GALERÍA DE IMÁGENES ======== -->
+    <section id="gallery" class="section">
+        <div class="container">
+            <h2 data-lang-key="galleryTitle">Conceptual Art</h2>
+            <p data-lang-key="gallerySubtitle">A glimpse into the visual and emotional world of Living Legacy. Use the
+                controls to navigate.</p>
+            <div class="gallery-container">
+                <div class="gallery-slider">
+                    <div class="gallery-slide">
+                        <img src="https://static.wixstatic.com/media/af3a4a_ff0075b9fff0439283025e763d38169e~mv2.png"
+                            alt="Conceptual Art 1">
+                    </div>
+                    <div class="gallery-slide">
+                        <img src="https://static.wixstatic.com/media/af3a4a_d695ba66b659434e94c445c54e584d61~mv2.png"
+                            alt="Conceptual Art 2">
+                    </div>
+                    <div class="gallery-slide">
+                        <img src="https://static.wixstatic.com/media/af3a4a_c74398bd887d48529cf6ac0875149e33~mv2.png"
+                            alt="Conceptual Art 3">
+                    </div>
+                    <div class="gallery-slide">
+                        <img src="https://static.wixstatic.com/media/af3a4a_075b35775a074e459dae6f82a736aaef~mv2.png"
+                            alt="Conceptual Art 4">
+                    </div>
+                    <div class="gallery-slide">
+                        <img src="https://static.wixstatic.com/media/af3a4a_5f579127961a4ff4a68da101bee302d5~mv2.png"
+                            alt="Conceptual Art 5">
+                    </div>
+                    <div class="gallery-slide">
+                        <img src="https://static.wixstatic.com/media/af3a4a_346ddc436bcc4879a41e952fd3683185~mv2.png"
+                            alt="Conceptual Art 6">
+                    </div>
+                    <div class="gallery-slide">
+                        <img src="https://static.wixstatic.com/media/af3a4a_6f762b8af68244e2890a1b0705bfdb4b~mv2.png"
+                            alt="Conceptual Art 7">
+                    </div>
+                    <div class="gallery-slide">
+                        <img src="https://static.wixstatic.com/media/af3a4a_5e3d466f7cd14c29b05f7d6183b05296~mv2.png"
+                            alt="Conceptual Art 8">
+                    </div>
+                    <div class="gallery-slide">
+                        <img src="https://static.wixstatic.com/media/af3a4a_8c0c9000079e4feba5255c705dde72f8~mv2.png"
+                            alt="Conceptual Art 9">
+                    </div>
+                </div>
+                <div class="gallery-nav">
+                    <button class="gallery-button prev-btn">PREV</button>
+                    <button class="gallery-button next-btn">NEXT</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ======== FIN DE LA NUEVA SECCIÓN ======== -->
 
     <!-- Call to Action Section -->
     <section id="cta" class="section">
@@ -787,6 +923,45 @@
                 card.style.transform = `translate(${x}px, ${y}px)`;
             });
         });
+        // --- SCRIPT PARA EL CARRUSEL DE IMÁGENES ---
+            document.addEventListener('DOMContentLoaded', () => {
+                const slider = document.querySelector('.gallery-slider');
+                const slides = document.querySelectorAll('.gallery-slide');
+                const prevBtn = document.querySelector('.prev-btn');
+                const nextBtn = document.querySelector('.next-btn');
+
+
+                let currentIndex = 0;
+                const slideCount = slides.length;
+
+
+                function goToSlide(index) {
+                    if (index < 0) {
+                        index = slideCount - 1;
+                    } else if (index >= slideCount) {
+                        index = 0;
+                    }
+                    slider.style.transform = `translateX(-${index * 100}%)`;
+                    currentIndex = index;
+                }
+
+
+                prevBtn.addEventListener('click', () => {
+                    goToSlide(currentIndex - 1);
+                });
+
+
+                nextBtn.addEventListener('click', () => {
+                    goToSlide(currentIndex + 1);
+                });
+
+                // También observa la nueva sección de galería para la animación de entrada
+                const gallerySection = document.getElementById('gallery');
+                if (gallerySection) {
+                    observer.observe(gallerySection);
+                }
+            });
+            // --- FIN DEL SCRIPT DEL CARRUSEL ---
 
         // Initialize everything
         window.addEventListener('load', () => {
@@ -969,8 +1144,8 @@
         //     typeWriter(subtitle, originalText, 30);
         // }, 2000); // Retraso original para el efecto de escritura
     </script>
-    <script type="text/javascript" src="https://www.authpro.com/auth/nvst_admin/?action=pp">
-</script>
+   <!--> <script type="text/javascript" src="https://www.authpro.com/auth/nvst_admin/?action=pp">
+    </script>-->
 </body>
 
 </html>
