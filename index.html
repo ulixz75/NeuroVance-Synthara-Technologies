@@ -321,6 +321,9 @@
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .tech-card::before {
@@ -362,6 +365,16 @@
             opacity: 0.8;
             line-height: 1.6;
         }
+        
+        .donation-buttons-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+        }
+
 
         /* Testimonial Section */
         .testimonial {
@@ -401,7 +414,6 @@
             /* --- ESTILOS PARA EL CARRUSEL DE IMÁGENES --- */
         .gallery-container {
             max-width: 1000px;
-            /* Ajusta el ancho máximo del carrusel */
             margin: 0 auto;
             position: relative;
             border-radius: 20px;
@@ -641,7 +653,6 @@
         <select id="languageSelector" class="language-selector">
             <option value="en">English</option>
             <option value="es">Español</option>
-            <!-- Puedes añadir más idiomas aquí -->
         </select>
     </div>
 
@@ -695,28 +706,36 @@
             <h2 data-lang-key="techTitle">Revolutionary Technologies</h2>
             <div class="tech-grid">
                 <div class="tech-card">
-                    <div class="tech-icon">🥽</div>
-                    <h3 data-lang-key="techXRTitle">Extended Reality (XR)</h3>
-                    <p data-lang-key="techXRDesc">Immersive environments combining virtual, augmented, and mixed reality
-                        to create completely convincing visual and spatial experiences.</p>
+                    <div>
+                        <div class="tech-icon">🥽</div>
+                        <h3 data-lang-key="techXRTitle">Extended Reality (XR)</h3>
+                        <p data-lang-key="techXRDesc">Immersive environments combining virtual, augmented, and mixed reality
+                            to create completely convincing visual and spatial experiences.</p>
+                    </div>
                 </div>
                 <div class="tech-card">
-                    <div class="tech-icon">🤲</div>
-                    <h3 data-lang-key="techHapticTitle">Emotional Haptics</h3>
-                    <p data-lang-key="techHapticDesc">Advanced tactile technology that simulates real physical
-                        sensations, from the first hug to the most intimate moments of connection.</p>
+                    <div>
+                        <div class="tech-icon">🤲</div>
+                        <h3 data-lang-key="techHapticTitle">Emotional Haptics</h3>
+                        <p data-lang-key="techHapticDesc">Advanced tactile technology that simulates real physical
+                            sensations, from the first hug to the most intimate moments of connection.</p>
+                    </div>
                 </div>
                 <div class="tech-card">
-                    <div class="tech-icon">🧠</div>
-                    <h3 data-lang-key="techBCITitle">Brain-Computer Interface (BCI)</h3>
-                    <p data-lang-key="techBCIDesc">Direct connection between thoughts and experience, allowing authentic
-                        and natural emotional responses.</p>
+                    <div>
+                        <div class="tech-icon">🧠</div>
+                        <h3 data-lang-key="techBCITitle">Brain-Computer Interface (BCI)</h3>
+                        <p data-lang-key="techBCIDesc">Direct connection between thoughts and experience, allowing authentic
+                            and natural emotional responses.</p>
+                    </div>
                 </div>
                 <div class="tech-card">
-                    <div class="tech-icon">🤖</div>
-                    <h3 data-lang-key="techAITitle">Adaptive Emotional AI</h3>
-                    <p data-lang-key="techAIDesc">Artificial intelligence systems that evolve and learn, creating unique
-                        personalities and genuine relationships.</p>
+                    <div>
+                        <div class="tech-icon">🤖</div>
+                        <h3 data-lang-key="techAITitle">Adaptive Emotional AI</h3>
+                        <p data-lang-key="techAIDesc">Artificial intelligence systems that evolve and learn, creating unique
+                            personalities and genuine relationships.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -742,7 +761,8 @@
             </div>
         </div>
     </section>
-    <!-- ======== NUEVA SECCIÓN DE GALERÍA DE IMÁGENES ======== -->
+    
+    <!-- Gallery Section -->
     <section id="gallery" class="section">
         <div class="container">
             <h2 data-lang-key="galleryTitle">Conceptual Art</h2>
@@ -750,42 +770,15 @@
                 controls to navigate.</p>
             <div class="gallery-container">
                 <div class="gallery-slider">
-                    <div class="gallery-slide">
-                        <img src="https://static.wixstatic.com/media/af3a4a_115ae82e0af44dab8892c6d92105f87d~mv2.png"
-                            alt="Conceptual Art 1">
-                    </div>
-                    <div class="gallery-slide">
-                        <img src="https://static.wixstatic.com/media/af3a4a_3eef3cfaebd040968d2057acff7aa7b1~mv2.png"
-                            alt="Conceptual Art 2">
-                    </div>
-                    <div class="gallery-slide">
-                        <img src="https://static.wixstatic.com/media/af3a4a_f25efc019278426981fa2887eb300e02~mv2.png"
-                            alt="Conceptual Art 3">
-                    </div>
-                    <div class="gallery-slide">
-                        <img src="https://static.wixstatic.com/media/af3a4a_88c80e3a12b348858038011ef02af08c~mv2.png"
-                            alt="Conceptual Art 4">
-                    </div>
-                    <div class="gallery-slide">
-                        <img src="https://static.wixstatic.com/media/af3a4a_6fa745034baa4658be0a7569d959a45f~mv2.png"
-                            alt="Conceptual Art 5">
-                    </div>
-                    <div class="gallery-slide">
-                        <img src="https://static.wixstatic.com/media/af3a4a_39fe3019748147e5be28540b2c326ea6~mv2.png"
-                            alt="Conceptual Art 6">
-                    </div>
-                    <div class="gallery-slide">
-                        <img src="https://static.wixstatic.com/media/af3a4a_a78c0f5522f04d97911c203e3279899f~mv2.png"
-                            alt="Conceptual Art 7">
-                    </div>
-                    <div class="gallery-slide">
-                        <img src="https://static.wixstatic.com/media/af3a4a_43d86f48ed3b4164b72041418e3eaf33~mv2.png"
-                            alt="Conceptual Art 8">
-                    </div>
-                    <div class="gallery-slide">
-                        <img src="https://static.wixstatic.com/media/af3a4a_fa018a3bcabc40d5844ffbb935df5685~mv2.png"
-                            alt="Conceptual Art 9">
-                    </div>
+                    <div class="gallery-slide"><img src="https://static.wixstatic.com/media/af3a4a_115ae82e0af44dab8892c6d92105f87d~mv2.png" alt="Conceptual Art 1"></div>
+                    <div class="gallery-slide"><img src="https://static.wixstatic.com/media/af3a4a_3eef3cfaebd040968d2057acff7aa7b1~mv2.png" alt="Conceptual Art 2"></div>
+                    <div class="gallery-slide"><img src="https://static.wixstatic.com/media/af3a4a_f25efc019278426981fa2887eb300e02~mv2.png" alt="Conceptual Art 3"></div>
+                    <div class="gallery-slide"><img src="https://static.wixstatic.com/media/af3a4a_88c80e3a12b348858038011ef02af08c~mv2.png" alt="Conceptual Art 4"></div>
+                    <div class="gallery-slide"><img src="https://static.wixstatic.com/media/af3a4a_6fa745034baa4658be0a7569d959a45f~mv2.png" alt="Conceptual Art 5"></div>
+                    <div class="gallery-slide"><img src="https://static.wixstatic.com/media/af3a4a_39fe3019748147e5be28540b2c326ea6~mv2.png" alt="Conceptual Art 6"></div>
+                    <div class="gallery-slide"><img src="https://static.wixstatic.com/media/af3a4a_a78c0f5522f04d97911c203e3279899f~mv2.png" alt="Conceptual Art 7"></div>
+                    <div class="gallery-slide"><img src="https://static.wixstatic.com/media/af3a4a_43d86f48ed3b4164b72041418e3eaf33~mv2.png" alt="Conceptual Art 8"></div>
+                    <div class="gallery-slide"><img src="https://static.wixstatic.com/media/af3a4a_fa018a3bcabc40d5844ffbb935df5685~mv2.png" alt="Conceptual Art 9"></div>
                 </div>
                 <div class="gallery-nav">
                     <button class="gallery-button prev-btn">☚</button>
@@ -794,18 +787,23 @@
             </div>
         </div>
     </section>
-    <!-- ======== FIN DE LA NUEVA SECCIÓN ======== -->
 
-    <!-- Call to Action Section -->
-    <section id="cta" class="section">
+    <!-- ======== SECCIÓN DE DONACIÓN UNIFICADA (VERSIÓN FINAL) ======== -->
+    <section id="support" class="section">
         <div class="container">
-            <h2 data-lang-key="ctaTitle">Are you a Visionary?</h2>
-            <p data-lang-key="ctaParagraph">This project requires brilliant minds, brave investors, and passionate
-                collaborators. Join us in creating the future of human experience.</p>
-            <a href="https://www.paypal.com/donate?campaign_id=2JEKJ9LJN24KW" class="cta-button" data-lang-key="Donate">Donate today</a>
-            <a href="mailto:NeuroVanceST@outlook.com?subject=Living%20Legacy" class="cta-button" data-lang-key="Donate">Contact Us</a>
+            <h2 data-lang-key="supportTitle">Support the Project</h2>
+            <p data-lang-key="supportSubtitle">Your contribution helps build the future of human experience. Please choose your preferred donation method below.</p>
+            
+            <div class="donation-buttons-container">
+                <!-- Botón de Criptomonedas (abre modal) -->
+                <a href="https://commerce.coinbase.com/checkout/43bcf3ce-9e2e-4e7d-b03c-5a17b060420d" class="cta-button buy-with-crypto" target="_blank" data-lang-key="cryptoButton">Donate with Crypto</a>
+
+                <!-- Botón de PayPal (abre nueva pestaña) -->
+                <a href="https://www.paypal.com/donate?campaign_id=2JEKJ9LJN24KW" class="cta-button" target="_blank" data-lang-key="paypalButton">Donate with PayPal</a>
+            </div>
         </div>
     </section>
+    <!-- ======== FIN DE LA SECCIÓN DE DONACIÓN ======== -->
 
 
     <!-- Footer -->
@@ -814,17 +812,23 @@
             <p data-lang-key="footerText1">Conceptual project by <strong>U.R.C.G</strong> — NeuroVance Synthara
                 Technologies</p>
             <div class="social-links">
-                <a href="URL_DE_TU_PAGINA_DE_FACEBOOK" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                <a href="URL_DE_TU_PAGINA_DE_INSTAGRAM" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="URL_DE_TU_CANAL_DE_YOUTUBE" target="_blank"><i class="fab fa-youtube"></i></a>
-                <a href="URL_DE_TU_PERFIL_DE_TIKTOK" target="_blank"><i class="fab fa-tiktok"></i></a>
-                <a href="URL_DE_TU_PERFIL_DE_LINKEDIN" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-tiktok"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
             </div>
             <p style="margin-top: 2rem; opacity: 0.5; font-size: 0.9rem;" data-lang-key="footerText2">
                 © 2025 Copyright Living Legacy. All rights reserved.
             </p>
+             <p style="margin-top: 1rem; opacity: 0.5; font-size: 0.9rem;">
+                <a href="mailto:NeuroVanceST@outlook.com?subject=Living%20Legacy" style="color: #13c5db; text-decoration: none;" data-lang-key="contactButton">Contact Us</a>
+            </p>
         </div>
     </footer>
+
+    <!-- SCRIPT DE COINBASE COMMERCE - ESENCIAL PARA LA VENTANA EMERGENTE -->
+    <script src="https://commerce.coinbase.com/v1/checkout.js?version=201807"></script>
 
     <script>
         // Scroll Progress Bar
@@ -878,13 +882,10 @@
             }
         }
 
-        // MODIFICACIÓN CRÍTICA AQUÍ: Video placeholder interaction
         function playVideo(videoId) {
             const videoContainer = document.querySelector('.video-container');
             const videoPlaceholder = document.querySelector('.video-placeholder');
-
             const embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
-
             const iframe = document.createElement('iframe');
             iframe.src = embedUrl;
             iframe.setAttribute('frameborder', '0');
@@ -895,13 +896,10 @@
             iframe.style.position = 'absolute';
             iframe.style.top = '0';
             iframe.style.left = '0';
-
             videoPlaceholder.remove();
-
             videoContainer.appendChild(iframe);
         }
 
-        // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -914,60 +912,31 @@
                 }
             });
         });
-
-        // Add subtle mouse movement effect
-        document.addEventListener('mousemove', (e) => {
-            const mouseX = e.clientX / window.innerWidth;
-            const mouseY = e.clientY / window.innerHeight;
-
-            document.querySelectorAll('.tech-card').forEach((card, index) => {
-                const speed = (index + 1) * 0.02;
-                const x = (mouseX - 0.5) * speed * 50;
-                const y = (mouseY - 0.5) * speed * 50;
-                card.style.transform = `translate(${x}px, ${y}px)`;
-            });
-        });
+        
         // --- SCRIPT PARA EL CARRUSEL DE IMÁGENES ---
-            document.addEventListener('DOMContentLoaded', () => {
-                const slider = document.querySelector('.gallery-slider');
-                const slides = document.querySelectorAll('.gallery-slide');
-                const prevBtn = document.querySelector('.prev-btn');
-                const nextBtn = document.querySelector('.next-btn');
+        document.addEventListener('DOMContentLoaded', () => {
+            const slider = document.querySelector('.gallery-slider');
+            const slides = document.querySelectorAll('.gallery-slide');
+            const prevBtn = document.querySelector('.prev-btn');
+            const nextBtn = document.querySelector('.next-btn');
+            let currentIndex = 0;
+            const slideCount = slides.length > 0 ? slides.length : 1;
 
+            function goToSlide(index) {
+                if (index < 0) index = slideCount - 1;
+                else if (index >= slideCount) index = 0;
+                slider.style.transform = `translateX(-${index * 100}%)`;
+                currentIndex = index;
+            }
+            if (prevBtn && nextBtn) {
+                prevBtn.addEventListener('click', () => goToSlide(currentIndex - 1));
+                nextBtn.addEventListener('click', () => goToSlide(currentIndex + 1));
+            }
+            
+            const gallerySection = document.getElementById('gallery');
+            if (gallerySection) observer.observe(gallerySection);
+        });
 
-                let currentIndex = 0;
-                const slideCount = slides.length;
-
-
-                function goToSlide(index) {
-                    if (index < 0) {
-                        index = slideCount - 1;
-                    } else if (index >= slideCount) {
-                        index = 0;
-                    }
-                    slider.style.transform = `translateX(-${index * 100}%)`;
-                    currentIndex = index;
-                }
-
-
-                prevBtn.addEventListener('click', () => {
-                    goToSlide(currentIndex - 1);
-                });
-
-
-                nextBtn.addEventListener('click', () => {
-                    goToSlide(currentIndex + 1);
-                });
-
-                // También observa la nueva sección de galería para la animación de entrada
-                const gallerySection = document.getElementById('gallery');
-                if (gallerySection) {
-                    observer.observe(gallerySection);
-                }
-            });
-            // --- FIN DEL SCRIPT DEL CARRUSEL ---
-
-        // Initialize everything
         window.addEventListener('load', () => {
             createParticles();
             updateScrollProgress();
@@ -978,11 +947,9 @@
             parallaxScroll();
         });
 
-        // Add typing effect to hero subtitle
         function typeWriter(element, text, speed = 50) {
             let i = 0;
-            element.innerHTML = ''; // Limpiar el contenido antes de escribir
-
+            element.innerHTML = ''; 
             function type() {
                 if (i < text.length) {
                     element.innerHTML += text.charAt(i);
@@ -990,11 +957,10 @@
                     setTimeout(type, speed);
                 }
             }
-
             type();
         }
 
-        // Diccionario de traducciones
+        // ======== TRADUCCIONES (VERSIÓN FINAL) ========
         const translations = {
             en: {
                 pageTitle: "Living Legacy - Immersive Parenthood Experience",
@@ -1018,12 +984,14 @@
                 techAIDesc: "Artificial intelligence systems that evolve and learn, creating unique personalities and genuine relationships.",
                 testimonialQuote: "I've learned that even amidst uncertainty, there's always room for hope. This idea I share with you stems from an intimate truth: the deep longing to experience, even if only in memory and feeling, what life didn't allow me to experience naturally. Being able to approach—even through an idea or a simulation—what it means to be a biological parent, is a powerful possibility. Not just for me, but for so many people who, for various reasons, couldn't experience that in a traditional way. What you are about to see is not just a project; it's a bridge to a universal emotion. Thank you for lending your gaze and sensibility.",
                 testimonialCite: "— URCG, Founder",
-               galleryTitle: "Conceptual Art",
-               gallerySubtitle: "A glimpse into the visual and emotional world of Living Legacy. Use the controls to navigate.",
-                ctaTitle: "Are you a Visionary?",
-                ctaParagraph: "This project requires brilliant minds, brave investors, and passionate collaborators. Join us in creating the future of human experience.",
-                joinButton: "Join the Journey",
-                footerText1: "Conceptual project by Ulises R. C. G. — NeuroVance Synthara Technologies",
+                galleryTitle: "Conceptual Art",
+                gallerySubtitle: "A glimpse into the visual and emotional world of Living Legacy. Use the controls to navigate.",
+                supportTitle: "Support the Project",
+                supportSubtitle: "Your contribution helps build the future of human experience. Please choose your preferred donation method below.",
+                cryptoButton: "Donate with Crypto",
+                paypalButton: "Donate with PayPal",
+                contactButton: "Contact Us",
+                footerText1: "Conceptual project by U.R.C.G — NeuroVance Synthara Technologies",
                 footerText2: "© 2025 Living Legacy. All rights reserved."
             },
             es: {
@@ -1042,7 +1010,7 @@
                 techXRDesc: "Entornos inmersivos que combinan realidad virtual, aumentada y mixta para crear experiencias visuales y espaciales completamente convincentes.",
                 techHapticTitle: "Háptica Emocional",
                 techHapticDesc: "Tecnología táctil avanzada que simula sensaciones físicas reales, desde el primer abrazo hasta los momentos más íntimos de conexión.",
-                techBCITitle: "Interfaz Cerebro-Computadora",
+                techBCITitle: "Interfaz Cerebro-Computadora (BCI)",
                 techBCIDesc: "Conexión directa entre pensamientos y experiencia, permitiendo respuestas emocionales auténticas y naturales.",
                 techAITitle: "IA Emocional Adaptativa",
                 techAIDesc: "Sistemas de inteligencia artificial que evolucionan y aprenden, creando personalidades únicas y relaciones genuinas.",
@@ -1050,109 +1018,54 @@
                 testimonialCite: "— URCG, Fundador",
                 galleryTitle: "Arte Conceptual",
                 gallerySubtitle: "Un vistazo al mundo visual y emocional de Legado Vivo. Usa los controles para navegar.",
-                ctaTitle: "¿Eres un Visionario?",
-                ctaParagraph: "Este proyecto requiere mentes brillantes, inversores valientes y colaboradores apasionados. Únete a nosotros en la creación del futuro de la experiencia humana.",
-                joinButton: "Únete al Viaje",
-                footerText1: "Proyecto conceptual de Ulises R. C. G. — NeuroVance Synthara Technologies",
+                supportTitle: "Apoya el Proyecto",
+                supportSubtitle: "Tu contribución ayuda a construir el futuro de la experiencia humana. Por favor, elige tu método de donación preferido a continuación.",
+                cryptoButton: "Donar con Cripto",
+                paypalButton: "Donar con PayPal",
+                contactButton: "Contáctanos",
+                footerText1: "Proyecto conceptual de U.R.C.G — NeuroVance Synthara Technologies",
                 footerText2: "© 2025 Legado Vivo. Todos los derechos reservados."
             }
-            // Agrega más idiomas aquí
         };
 
-        // Función para aplicar las traducciones
         function setLanguage(lang) {
-            // Actualiza el atributo lang del HTML
             document.documentElement.lang = lang;
-
-            // Itera sobre todos los elementos con el atributo data-lang-key
             document.querySelectorAll('[data-lang-key]').forEach(element => {
                 const key = element.getAttribute('data-lang-key');
                 if (translations[lang] && translations[lang][key]) {
-                    // Casos especiales para meta tags y el título de la página
                     if (element.tagName === 'META') {
-                        if (element.getAttribute('name') === 'description') {
-                            element.setAttribute('content', translations[lang][key]);
-                        } else if (element.getAttribute('name') === 'keywords') {
-                            element.setAttribute('content', translations[lang][key]);
-                        }
+                        element.setAttribute('content', translations[lang][key]);
                     } else if (element.tagName === 'TITLE') {
                         document.title = translations[lang][key];
-                    } else if (element.tagName === 'STRONG') {
-                        // Para el caso del <strong> dentro del footerText1, actualiza su parentNode.
-                        // Esto asume que el strong es el único contenido dinámico dentro de ese p.
-                        // Si hubiera más contenido, esta lógica podría necesitar ser más robusta.
-                        // Para este ejemplo, funciona porque el texto "Ulises R. C. G." es estático en el strong
-                        // y el resto del párrafo se actualiza normalmente con data-lang-key="footerText1"
-                        // La mejor práctica sería tener data-lang-key en el p y el strong tener su propio key
-                        // o manejar el párrafo completo en JS si tiene html interno.
-                        // Sin embargo, para no complicar el HTML existente, asumimos que el padre <p> ya tiene su data-lang-key
-                        // y el strong forma parte de ese texto.
-                        // Simplificamos: el `setLanguage` actualizará el `textContent` del `p` completo.
-                        // Si el `<strong>` necesita traducción independiente, necesitaría su propio `data-lang-key`.
-                        // Como está ahora, el `p` completo con el `<strong>` se obtiene y se le asigna el nuevo texto,
-                        // lo que significa que el `<strong>` se perderá a menos que la traducción incluya el `<strong>`
-                        // o se maneje el HTML interno.
-                        // Ajustamos para que `footerText1` contenga la etiqueta strong si es necesario.
-                        element.textContent = translations[lang][key]; // Esto probablemente no es lo que quieres para strong.
-                        // La solución robusta sería:
-                        // let translatedText = translations[lang][key];
-                        // if (key === 'footerText1') {
-                        //     element.innerHTML = translatedText.replace('Ulises R. C. G.', '<strong>Ulises R. C. G.</strong>');
-                        // } else {
-                        //     element.textContent = translatedText;
-                        // }
-                        // Pero para mantener la simplicidad y ya que `footerText1` solo tiene un `strong` para resaltar
-                        // el nombre, lo más sencillo es que el HTML ya lo contenga y el JS actualice el texto del `p`.
-                        // La clave `footerText1` ahora debería contener la etiqueta `<strong>` si no lo hacía.
-                        element.textContent = translations[lang][key]; // Ahora, el footerText1 debería tener el strong
-                    }
-                    else {
-                        element.textContent = translations[lang][key];
+                    } else {
+                        // Usar innerHTML permite que las traducciones incluyan etiquetas como <strong>
+                        element.innerHTML = translations[lang][key];
                     }
                 }
             });
-
-            // Opcional: Guardar el idioma seleccionado en localStorage para que persista
             localStorage.setItem('selectedLanguage', lang);
 
-            // Si tienes el efecto de TypeWriter en el subtítulo del hero, recargarlo
-            // Se retrasa un poco para asegurar que el elemento esté visible después de las animaciones iniciales
             setTimeout(() => {
                 const subtitle = document.querySelector('.hero p');
-                const originalText = translations[lang]['heroSubtitle']; // Obtén el texto en el nuevo idioma
+                const originalText = translations[lang]['heroSubtitle'];
                 if (subtitle && typeof typeWriter === 'function') {
                     typeWriter(subtitle, originalText, 30);
                 }
-            }, 500); // Pequeño retraso para evitar conflictos con la animación inicial del hero
+            }, 500);
         }
 
-        // Obtener el idioma guardado o usar el por defecto (inglés)
-        const savedLanguage = localStorage.getItem('selectedLanguage') || 'en';
-
-        // Establecer el idioma inicial al cargar la página
         document.addEventListener('DOMContentLoaded', () => {
+            const savedLanguage = localStorage.getItem('selectedLanguage') || 'en';
             const languageSelector = document.getElementById('languageSelector');
             if (languageSelector) {
-                languageSelector.value = savedLanguage; // Establece el valor del selector al idioma guardado
-                setLanguage(savedLanguage); // Aplica la traducción al cargar la página
+                languageSelector.value = savedLanguage;
+                setLanguage(savedLanguage);
                 languageSelector.addEventListener('change', (event) => {
                     setLanguage(event.target.value);
                 });
             }
-
-            // Inicializar el efecto de typing en el subtítulo del hero después de un retraso inicial
-            // Este retraso se ha movido dentro de `setLanguage` y se ejecuta cada vez que el idioma cambia.
-            // La llamada inicial se hace ahora a través de `setLanguage(savedLanguage)`.
         });
-
-        // Initialize typing effect after hero animation (ya manejado por setLanguage)
-        // setTimeout(() => {
-        //     const subtitle = document.querySelector('.hero p');
-        //     const originalText = subtitle.textContent; // O la traducción si ya se ha cargado
-        //     typeWriter(subtitle, originalText, 30);
-        // }, 2000); // Retraso original para el efecto de escritura
     </script>
     
 </body>
-
 </html>
