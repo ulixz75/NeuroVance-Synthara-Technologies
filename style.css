@@ -142,12 +142,6 @@ main, header, footer { position: relative; z-index: 1; }
 .video-frame { border-radius: 14px; overflow: hidden; border: 1px solid var(--line); background: #05060f; }
 .video-frame video { width: 100%; display: block; background: #000; }
 .frame-landscape video { aspect-ratio: 16/9; }
-.frame-portrait { display: none; }
-.frame-portrait video { aspect-ratio: 9/16; max-height: 76vh; margin: 0 auto; width: auto; max-width: 100%; }
-@media (max-width: 768px) {
-  .frame-landscape { display: none; }
-  .frame-portrait { display: block; }
-}
 .video-meta { display: flex; justify-content: space-between; padding: .8rem .4rem 0; color: var(--muted); font-size: .88rem; }
 
 /* Vision points */
