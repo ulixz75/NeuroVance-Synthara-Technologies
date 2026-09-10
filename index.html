@@ -47,6 +47,7 @@
         <a href="#story" data-lang-key="navStory">Story</a>
         <a href="#gallery" data-lang-key="navGallery">Gallery</a>
         <a href="#faq" data-lang-key="navFaq">FAQ</a>
+        <button class="nav-note" data-open-note><i class="fa-solid fa-envelope-open-text" aria-hidden="true"></i><span data-lang-key="navNote">Founder's note</span></button>
       </nav>
       <div class="header-actions">
         <select id="languageSelector" class="language-selector" aria-label="Language / Idioma">
@@ -65,6 +66,7 @@
       <a href="#story" data-lang-key="navStory">Story</a>
       <a href="#gallery" data-lang-key="navGallery">Gallery</a>
       <a href="#faq" data-lang-key="navFaq">FAQ</a>
+      <button class="nav-note" data-open-note><i class="fa-solid fa-envelope-open-text" aria-hidden="true"></i><span data-lang-key="navNote">Founder's note</span></button>
       <a href="#support" class="btn btn-primary btn-sm" data-lang-key="navDonate">Donate</a>
     </div>
   </header>
@@ -81,11 +83,6 @@
             <a href="#vision" class="btn btn-primary magnetic shine" data-lang-key="exploreButton">Explore Vision<i class="fa-solid fa-arrow-down" aria-hidden="true"></i></a>
             <button class="btn btn-ghost magnetic" data-scroll-to="#film" data-lang-key="watchButton"><i class="fa-solid fa-play" aria-hidden="true"></i>Watch the film</button>
           </div>
-          <dl class="hero-stats reveal">
-            <div><dt data-lang-key="stat1n">0–18 yrs</dt><dd data-lang-key="stat1l">simulated journey</dd></div>
-            <div><dt data-lang-key="stat2n">4 core techs</dt><dd data-lang-key="stat2l">XR · Haptics · BCI · AI</dd></div>
-            <div><dt data-lang-key="stat3n">EN / ES</dt><dd data-lang-key="stat3l">fully bilingual</dd></div>
-          </dl>
         </div>
         <div class="hero-visual reveal">
           <div class="avatar-ring" aria-hidden="true"><span></span></div>
@@ -115,15 +112,15 @@
         <p class="eyebrow reveal" data-lang-key="filmEyebrow">The film · 01</p>
         <h2 class="reveal" data-lang-key="filmTitle">Discover the future of human experience</h2>
         <div class="video-shell glass reveal">
-          <div class="video-container">
-            <div class="video-placeholder" id="videoPlaceholder" role="button" tabindex="0" aria-label="Play video">
-              <span class="play-button" aria-hidden="true">▶</span>
-              <p data-lang-key="videoPlaceholderText">Discover the Future of Human Experience</p>
-            </div>
+          <div class="video-frame frame-landscape">
+            <video controls preload="metadata" playsinline src="https://res.cloudinary.com/drniuzbh4/video/upload/v1789065611/NVST_Comercial_coming_soon_j6nwr6.mp4"></video>
+          </div>
+          <div class="video-frame frame-portrait">
+            <video controls preload="metadata" playsinline src="https://res.cloudinary.com/drniuzbh4/video/upload/v1789065481/NVST_comercial_video_v2-9_10_2026_6_38_PM_tucywe.mp4"></video>
           </div>
           <div class="video-meta">
-            <span><i class="fa-brands fa-youtube"></i> YouTube</span>
-            <span data-lang-key="filmMeta">Concept teaser · 2 min</span>
+            <span><i class="fa-solid fa-clapperboard"></i> NVST</span>
+            <span data-lang-key="filmMeta">Official spot · coming soon</span>
           </div>
         </div>
       </div>
@@ -314,6 +311,33 @@
       </div>
     </div>
   </footer>
+
+  <!-- Founder note modal -->
+  <div class="note-modal" id="noteModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="noteTitle">
+    <div class="note-backdrop" data-close-note></div>
+    <div class="note-card beam">
+      <div class="note-head">
+        <span class="avatar-initials" aria-hidden="true">UR</span>
+        <div>
+          <h3 id="noteTitle" data-lang-key="noteTitle">Founder's note</h3>
+          <p data-lang-key="storyRole">Founder — NeuroVance Synthara Technologies</p>
+        </div>
+        <button class="lb-close note-close" data-close-note aria-label="Close">✕</button>
+      </div>
+      <div class="note-progress" aria-hidden="true"><span></span><span></span><span></span></div>
+      <div class="note-body">
+        <p id="noteP1"></p>
+        <p id="noteP2"></p>
+        <p id="noteP3"></p>
+        <p class="note-cite" id="noteCite"></p>
+      </div>
+      <div class="note-actions">
+        <button class="btn btn-ghost btn-sm" id="noteReplay"><i class="fa-solid fa-rotate-right" aria-hidden="true"></i><span data-lang-key="noteReplay">Replay</span></button>
+        <button class="btn btn-ghost btn-sm" id="noteSkip"><i class="fa-solid fa-forward" aria-hidden="true"></i><span data-lang-key="noteSkip">Skip</span></button>
+        <a href="#support" class="btn btn-primary btn-sm" data-close-note data-lang-key="navDonate">Donate</a>
+      </div>
+    </div>
+  </div>
 
   <!-- Lightbox -->
   <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-label="Render viewer">

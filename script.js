@@ -158,26 +158,98 @@ if (!isTouch && !prefersReduced) {
   });
 }
 
-/* ---------- Video facade ---------- */
-const VIDEO_ID = 'r-PFVdafHm8';
-function playVideo() {
-  const container = document.querySelector('.video-container');
-  const ph = document.getElementById('videoPlaceholder');
-  if (!container || !ph || container.querySelector('iframe')) return;
-  const iframe = document.createElement('iframe');
-  iframe.src = `https://www.youtube.com/embed/${VIDEO_ID}?autoplay=1&rel=0&modestbranding=1`;
-  iframe.title = 'Living Legacy — concept film';
-  iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
-  iframe.allowFullscreen = true;
-  ph.remove();
-  container.appendChild(iframe);
+/* ---------- Founder note modal + sequential typewriter ---------- */
+const NOTE_SPEED = 14; // ms per char — readable, unhurried
+let noteTimers = [], noteOpener = null;
+function noteParagraphs() {
+  const lang = document.documentElement.lang === 'es' ? 'es' : 'en';
+  const d = translations[lang] || translations.en;
+  return [d.storyQ1, d.storyQ2, d.storyQ3];
 }
-document.getElementById('videoPlaceholder')?.addEventListener('click', playVideo);
-document.getElementById('videoPlaceholder')?.addEventListener('keydown', e => {
-  if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); playVideo(); }
+function clearNoteTimers() { noteTimers.forEach(clearTimeout); noteTimers = []; }
+function playNote() {
+  const modal = document.getElementById('noteModal');
+  if (!modal) return;
+  clearNoteTimers();
+  const texts = noteParagraphs();
+  const els = [document.getElementById('noteP1'), document.getElementById('noteP2'), document.getElementById('noteP3')];
+  const cite = document.getElementById('noteCite');
+  const bars = [...modal.querySelectorAll('.note-progress span')];
+  els.forEach(el => { if (el) { el.textContent = ''; el.classList.remove('typing'); } });
+  bars.forEach(b => b.classList.remove('done'));
+  if (cite) cite.textContent = '';
+  if (prefersReduced) {
+    els.forEach((el, i) => { if (el) el.textContent = texts[i]; });
+    bars.forEach(b => b.classList.add('done'));
+    const lang = document.documentElement.lang === 'es' ? 'es' : 'en';
+    if (cite) cite.textContent = translations[lang].testimonialCite;
+    return;
+  }
+  let delay = 500;
+  texts.forEach((text, i) => {
+    const el = els[i];
+    if (!el) return;
+    noteTimers.push(setTimeout(() => {
+      el.classList.add('typing');
+      let c = 0;
+      (function tick() {
+        if (!modal.classList.contains('open')) return;
+        el.textContent = text.slice(0, ++c);
+        if (c < text.length) noteTimers.push(setTimeout(tick, NOTE_SPEED));
+        else {
+          el.classList.remove('typing');
+          bars[i]?.classList.add('done');
+          if (i === texts.length - 1) {
+            const lang = document.documentElement.lang === 'es' ? 'es' : 'en';
+            if (cite) cite.textContent = translations[lang].testimonialCite;
+          }
+        }
+      })();
+    }, delay));
+    delay += text.length * NOTE_SPEED + 450;
+  });
+}
+function skipNote() {
+  clearNoteTimers();
+  const modal = document.getElementById('noteModal');
+  const texts = noteParagraphs();
+  [document.getElementById('noteP1'), document.getElementById('noteP2'), document.getElementById('noteP3')]
+    .forEach((el, i) => { if (el) { el.textContent = texts[i]; el.classList.remove('typing'); } });
+  modal?.querySelectorAll('.note-progress span').forEach(b => b.classList.add('done'));
+  const lang = document.documentElement.lang === 'es' ? 'es' : 'en';
+  const cite = document.getElementById('noteCite');
+  if (cite) cite.textContent = translations[lang].testimonialCite;
+}
+function openNote(opener) {
+  const modal = document.getElementById('noteModal');
+  if (!modal) return;
+  noteOpener = opener || document.activeElement;
+  modal.classList.add('open');
+  modal.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+  document.getElementById('mobileMenu')?.classList.remove('open');
+  document.getElementById('hamburger')?.classList.remove('open');
+  playNote();
+  modal.querySelector('.note-close')?.focus();
+}
+function closeNote() {
+  const modal = document.getElementById('noteModal');
+  if (!modal) return;
+  clearNoteTimers();
+  modal.classList.remove('open');
+  modal.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+  if (noteOpener && noteOpener.focus) noteOpener.focus();
+}
+document.querySelectorAll('[data-open-note]').forEach(b => b.addEventListener('click', () => openNote(b)));
+document.querySelectorAll('[data-close-note]').forEach(b => b.addEventListener('click', closeNote));
+document.getElementById('noteReplay')?.addEventListener('click', playNote);
+document.getElementById('noteSkip')?.addEventListener('click', skipNote);
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    if (document.getElementById('noteModal')?.classList.contains('open')) closeNote();
+  }
 });
-// legacy inline onclick compat
-window.playVideo = playVideo;
 
 /* ---------- Concept Lab: viewer + HUD + captions + filmstrip + lightbox ---------- */
 var labGo = null, labRender = null;
@@ -330,14 +402,14 @@ const translations = {
     metaKeywords: 'extended reality, XR, virtual parenthood, emotional AI, immersive technology, BCI, haptics, NeuroVance',
     skipLink: 'Skip to content',
     navVision: 'Vision', navTech: 'Tech', navStory: 'Story', navGallery: 'Gallery', navFaq: 'FAQ', navDonate: 'Donate',
+    navNote: "Founder's note", noteTitle: "Founder's note", noteReplay: 'Replay', noteSkip: 'Skip',
     heroBadge: 'Concept · XR · Emotional AI · BCI',
     heroTitle: 'LIVING LEGACY',
     heroSubtitle: 'An immersive experience to feel the parenthood that never was.',
     exploreButton: 'Explore Vision', watchButton: 'Watch the film',
-    stat1n: '0–18 yrs', stat1l: 'simulated journey', stat2n: '4 core techs', stat2l: 'XR · Haptics · BCI · AI', stat3n: 'EN / ES', stat3l: 'fully bilingual',
     chipHaptics: 'Haptics',
     filmEyebrow: 'The film · 01', filmTitle: 'Discover the future of human experience',
-    videoPlaceholderText: 'Discover the Future of Human Experience', filmMeta: 'Concept teaser · 2 min',
+    filmMeta: 'Official spot · coming soon',
     visionEyebrow: 'The vision · 02', visionTitle: 'The Vision',
     visionParagraph1: "For those who couldn't have children, we offer a way to explore what could have been. A multi-sensory simulation from birth to 18 years, where the most advanced technology meets the deepest emotionality.",
     visionParagraph2: "Living Legacy is not just a simulation; it's a bridge to understanding parenthood, human connection, and the meaning of leaving a mark on a life.",
@@ -392,14 +464,14 @@ const translations = {
     metaKeywords: 'realidad extendida, XR, paternidad virtual, IA emocional, tecnología inmersiva, BCI, háptica, NeuroVance',
     skipLink: 'Saltar al contenido',
     navVision: 'Visión', navTech: 'Tech', navStory: 'Historia', navGallery: 'Galería', navFaq: 'FAQ', navDonate: 'Donar',
+    navNote: 'Nota del fundador', noteTitle: 'Nota del fundador', noteReplay: 'Repetir', noteSkip: 'Omitir',
     heroBadge: 'Concepto · XR · IA Emocional · BCI',
     heroTitle: 'LEGADO VIVO',
     heroSubtitle: 'Una experiencia inmersiva para sentir la paternidad que nunca fue vivida.',
     exploreButton: 'Explorar Visión', watchButton: 'Ver el video',
-    stat1n: '0–18 años', stat1l: 'viaje simulado', stat2n: '4 tecnologías', stat2l: 'XR · Háptica · BCI · IA', stat3n: 'EN / ES', stat3l: 'totalmente bilingüe',
     chipHaptics: 'Háptica',
     filmEyebrow: 'El video · 01', filmTitle: 'Descubre el futuro de la experiencia humana',
-    videoPlaceholderText: 'Descubre el Futuro de la Experiencia Humana', filmMeta: 'Teaser conceptual · 2 min',
+    filmMeta: 'Spot oficial · próximamente',
     visionEyebrow: 'La visión · 02', visionTitle: 'La Visión',
     visionParagraph1: 'Para quienes no pudieron tener hijos, ofrecemos una forma de explorar lo que pudo haber sido. Una simulación multisensorial desde el nacimiento hasta los 18 años, donde la tecnología más avanzada se encuentra con la emotividad más profunda.',
     visionParagraph2: 'Legado Vivo no es solo una simulación, es un puente hacia la comprensión de la paternidad, la conexión humana y el significado de dejar huella en una vida.',
@@ -469,6 +541,7 @@ function setLanguage(lang) {
   const sub = document.getElementById('heroSubtitle');
   if (sub) typeWriter(sub, translations[lang].heroSubtitle, 26);
   if (typeof labRender === 'function') labRender();
+  if (document.getElementById('noteModal')?.classList.contains('open')) playNote();
 }
 
 document.addEventListener('DOMContentLoaded', () => {
