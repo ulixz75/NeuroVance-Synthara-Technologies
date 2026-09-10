@@ -1,236 +1,289 @@
 <!DOCTYPE html>
-<html lang="en"> <!-- Idioma principal establecido en inglés -->
-
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title data-lang-key="pageTitle">Living Legacy - Immersive Parenthood Experience</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="icon" href="https://static.wixstatic.com/ficons/af3a4a_6173983436864e2db944f72f25def6ec~mv2.ico"
-        type="image/x-icon">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-lang-key="pageTitle">Living Legacy — Immersive Parenthood Experience | NeuroVance Synthara</title>
+  <meta name="description" content="An immersive experience to feel the parenthood that never was, using XR, emotional AI, advanced haptics, and BCI" data-lang-key="metaDescription" />
+  <meta name="keywords" content="extended reality, XR, virtual parenthood, emotional AI, immersive technology, BCI, haptics, NeuroVance" data-lang-key="metaKeywords" />
+  <meta name="author" content="Ulises R. C. G. — NeuroVance Synthara Technologies" />
+  <meta name="theme-color" content="#05060f" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Living Legacy — Immersive Parenthood Experience" />
+  <meta property="og:description" content="XR · Emotional AI · Haptics · BCI. A multi-sensory journey from birth to 18 years." />
+  <meta property="og:image" content="https://static.wixstatic.com/media/af3a4a_e11177e185b147a9a3f5b90233c5c782~mv2.png" />
+  <meta name="twitter:card" content="summary_large_image" />
 
-    <meta name="description"
-        content="An immersive experience to feel the parenthood that never was, using XR, emotional AI, advanced haptics, and BCI"
-        data-lang-key="metaDescription">
-    <meta name="keywords" content="extended reality, XR, virtual parenthood, emotional AI, immersive technology"
-        data-lang-key="metaKeywords">
-    <meta name="author" content="Ulises R. C. G. - NeuroVance Synthara Technologies">
-
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="icon" href="https://static.wixstatic.com/ficons/af3a4a_6173983436864e2db944f72f25def6ec~mv2.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
-    <div class="scroll-progress"></div>
-    <div class="particles"></div>
+  <a class="skip-link" href="#main" data-lang-key="skipLink">Skip to content</a>
+  <div class="scroll-progress" aria-hidden="true"></div>
 
-    <!-- Contenedor del selector de idioma -->
-    <div class="language-selector-container">
-        <select id="languageSelector" class="language-selector">
-            <option value="en">English</option>
-            <option value="es">Español</option>
+  <!-- Ambient tech background: aurora + neural canvas + grain -->
+  <div class="ambient" aria-hidden="true">
+    <div class="aurora aurora-a"></div>
+    <div class="aurora aurora-b"></div>
+    <div class="aurora aurora-c"></div>
+    <div class="grid-overlay"></div>
+    <canvas id="neural-bg"></canvas>
+    <div class="noise"></div>
+  </div>
+
+  <!-- Sticky glass header -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a href="#top" class="brand" aria-label="NeuroVance Synthara — Living Legacy">
+        <span class="brand-mark"><img src="https://static.wixstatic.com/media/af3a4a_e11177e185b147a9a3f5b90233c5c782~mv2.png" alt="" width="32" height="32" /></span>
+        <span class="brand-text"><strong>NeuroVance</strong><em>Synthara</em></span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="#vision" data-lang-key="navVision">Vision</a>
+        <a href="#technologies" data-lang-key="navTech">Tech</a>
+        <a href="#story" data-lang-key="navStory">Story</a>
+        <a href="#gallery" data-lang-key="navGallery">Gallery</a>
+        <a href="#faq" data-lang-key="navFaq">FAQ</a>
+      </nav>
+      <div class="header-actions">
+        <select id="languageSelector" class="language-selector" aria-label="Language / Idioma">
+          <option value="en">EN</option>
+          <option value="es">ES</option>
         </select>
+        <a href="#support" class="btn btn-primary btn-sm magnetic" data-lang-key="navDonate">Donate</a>
+        <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#vision" data-lang-key="navVision">Vision</a>
+      <a href="#technologies" data-lang-key="navTech">Tech</a>
+      <a href="#story" data-lang-key="navStory">Story</a>
+      <a href="#gallery" data-lang-key="navGallery">Gallery</a>
+      <a href="#faq" data-lang-key="navFaq">FAQ</a>
+      <a href="#support" class="btn btn-primary btn-sm" data-lang-key="navDonate">Donate</a>
+    </div>
+  </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-avatar">
-                    <div class="hero-avatar-inner">
-                        <img src="https://static.wixstatic.com/media/af3a4a_e11177e185b147a9a3f5b90233c5c782~mv2.png"
-                            alt="Legado Vivo Logo" class="logo-inside-avatar">
-                    </div>
-                </div>
-                <h1 data-lang-key="heroTitle">LIVING LEGACY</h1>
-                <p data-lang-key="heroSubtitle">An immersive experience to feel the parenthood that never was.</p>
-                <a href="#vision" class="cta-button" data-lang-key="exploreButton">Explore Vision</a>
-            </div>
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero" id="top">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow reveal"><span class="pulse-dot" aria-hidden="true"></span><span data-lang-key="heroBadge">Concept · XR · Emotional AI · BCI</span></p>
+          <h1 class="reveal" data-lang-key="heroTitle">LIVING LEGACY</h1>
+          <p class="hero-subtitle" id="heroSubtitle" data-lang-key="heroSubtitle">An immersive experience to feel the parenthood that never was.</p>
+          <div class="hero-ctas reveal">
+            <a href="#vision" class="btn btn-primary magnetic shine" data-lang-key="exploreButton">Explore Vision<i class="fa-solid fa-arrow-down" aria-hidden="true"></i></a>
+            <button class="btn btn-ghost magnetic" data-scroll-to="#film" data-lang-key="watchButton"><i class="fa-solid fa-play" aria-hidden="true"></i>Watch the film</button>
+          </div>
+          <dl class="hero-stats reveal">
+            <div><dt data-lang-key="stat1n">0–18 yrs</dt><dd data-lang-key="stat1l">simulated journey</dd></div>
+            <div><dt data-lang-key="stat2n">4 core techs</dt><dd data-lang-key="stat2l">XR · Haptics · BCI · AI</dd></div>
+            <div><dt data-lang-key="stat3n">EN / ES</dt><dd data-lang-key="stat3l">fully bilingual</dd></div>
+          </dl>
         </div>
+        <div class="hero-visual reveal">
+          <div class="avatar-ring" aria-hidden="true"><span></span></div>
+          <div class="hero-avatar">
+            <div class="hero-avatar-inner">
+              <img src="https://static.wixstatic.com/media/af3a4a_e11177e185b147a9a3f5b90233c5c782~mv2.png" alt="Living Legacy emblem" fetchpriority="high" />
+            </div>
+          </div>
+          <div class="orbit-chip chip-a glass"><i class="fa-solid fa-vr-cardboard"></i><span>XR</span></div>
+          <div class="orbit-chip chip-b glass"><i class="fa-solid fa-brain"></i><span>BCI</span></div>
+          <div class="orbit-chip chip-c glass"><i class="fa-solid fa-hand-holding-heart"></i><span data-lang-key="chipHaptics">Haptics</span></div>
+          <div class="orbit-chip chip-d glass"><i class="fa-solid fa-microchip"></i><span>AI</span></div>
+        </div>
+      </div>
+      <a class="scroll-hint" href="#film" aria-label="Scroll down"><span></span></a>
+      <div class="ticker" aria-hidden="true">
+        <div class="ticker-track">
+          <span>Extended Reality</span><i>◆</i><span>Brain-Computer Interface</span><i>◆</i><span>Emotional Haptics</span><i>◆</i><span>Adaptive AI</span><i>◆</i><span>Spatial Computing</span><i>◆</i><span>Multisensory Simulation</span><i>◆</i>
+          <span>Extended Reality</span><i>◆</i><span>Brain-Computer Interface</span><i>◆</i><span>Emotional Haptics</span><i>◆</i><span>Adaptive AI</span><i>◆</i><span>Spatial Computing</span><i>◆</i><span>Multisensory Simulation</span><i>◆</i>
+        </div>
+      </div>
     </section>
 
-    <!-- Video Section -->
-    <section class="video-section">
-        <div class="container">
-            <div class="video-container">
-                <div class="video-placeholder" onclick="playVideo('r-PFVdafHm8')">
-                    <div class="play-button">▶</div>
-                    <div style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); font-size: 1.2rem; color: rgba(255,255,255,0.8); width: 100%; text-align: center;"
-                        data-lang-key="videoPlaceholderText">
-                        Discover the Future of Human Experience
-                    </div>
-                </div>
+    <!-- FILM -->
+    <section class="section" id="film">
+      <div class="container">
+        <p class="eyebrow reveal" data-lang-key="filmEyebrow">The film · 01</p>
+        <h2 class="reveal" data-lang-key="filmTitle">Discover the future of human experience</h2>
+        <div class="video-shell glass reveal">
+          <div class="video-container">
+            <div class="video-placeholder" id="videoPlaceholder" role="button" tabindex="0" aria-label="Play video">
+              <span class="play-button" aria-hidden="true">▶</span>
+              <p data-lang-key="videoPlaceholderText">Discover the Future of Human Experience</p>
             </div>
+          </div>
+          <div class="video-meta">
+            <span><i class="fa-brands fa-youtube"></i> YouTube</span>
+            <span data-lang-key="filmMeta">Concept teaser · 2 min</span>
+          </div>
         </div>
+      </div>
     </section>
 
-    <!-- Vision Section -->
+    <!-- VISION -->
     <section id="vision" class="section">
-        <div class="container">
-            <h2 data-lang-key="visionTitle">The Vision</h2>
-            <p data-lang-key="visionParagraph1">For those who couldn't have children, we offer a way to explore what
-                could have been. A multi-sensory simulation from birth to 18 years, where the most advanced technology
-                meets the deepest emotionality.</p>
-            <p data-lang-key="visionParagraph2">Living Legacy is not just a simulation; it's a bridge to understanding
-                parenthood, human connection, and the meaning of leaving a mark on a life.</p>
+      <div class="container">
+        <p class="eyebrow reveal" data-lang-key="visionEyebrow">The vision · 02</p>
+        <h2 class="reveal" data-lang-key="visionTitle">The Vision</h2>
+        <p class="lead reveal" data-lang-key="visionParagraph1">For those who couldn't have children, we offer a way to explore what could have been. A multi-sensory simulation from birth to 18 years, where the most advanced technology meets the deepest emotionality.</p>
+        <p class="lead lead-dim reveal" data-lang-key="visionParagraph2">Living Legacy is not just a simulation; it's a bridge to understanding parenthood, human connection, and the meaning of leaving a mark on a life.</p>
+        <div class="vision-points">
+          <div class="vpoint glass spot reveal" data-tilt><i class="fa-solid fa-wave-square"></i><div><h3 data-lang-key="vp1t">Multi-sensory</h3><p data-lang-key="vp1d">Sight, sound, touch and emotion synchronized in one coherent world.</p></div></div>
+          <div class="vpoint glass spot reveal" data-tilt><i class="fa-solid fa-timeline"></i><div><h3 data-lang-key="vp2t">Birth to 18</h3><p data-lang-key="vp2d">A continuous arc — first steps, first words, growing up together.</p></div></div>
+          <div class="vpoint glass spot reveal" data-tilt><i class="fa-solid fa-heart-pulse"></i><div><h3 data-lang-key="vp3t">Emotional bridge</h3><p data-lang-key="vp3d">Technology in service of empathy, memory and hope.</p></div></div>
         </div>
+      </div>
     </section>
 
-    <!-- Technologies Section -->
+    <!-- TECHNOLOGIES / BENTO -->
     <section id="technologies" class="section">
-        <div class="container">
-            <h2 data-lang-key="techTitle">Revolutionary Technologies</h2>
-            <div class="tech-grid">
-                <div class="tech-card">
-                    <div>
-                        <div class="tech-icon">🥽</div>
-                        <h3 data-lang-key="techXRTitle">Extended Reality (XR)</h3>
-                        <p data-lang-key="techXRDesc">Immersive environments combining virtual, augmented, and mixed reality
-                            to create completely convincing visual and spatial experiences.</p>
-                    </div>
-                </div>
-                <div class="tech-card">
-                    <div>
-                        <div class="tech-icon">🤲</div>
-                        <h3 data-lang-key="techHapticTitle">Emotional Haptics</h3>
-                        <p data-lang-key="techHapticDesc">Advanced tactile technology that simulates real physical
-                            sensations, from the first hug to the most intimate moments of connection.</p>
-                    </div>
-                </div>
-                <div class="tech-card">
-                    <div>
-                        <div class="tech-icon">🧠</div>
-                        <h3 data-lang-key="techBCITitle">Brain-Computer Interface (BCI)</h3>
-                        <p data-lang-key="techBCIDesc">Direct connection between thoughts and experience, allowing authentic
-                            and natural emotional responses.</p>
-                    </div>
-                </div>
-                <div class="tech-card">
-                    <div>
-                        <div class="tech-icon">🤖</div>
-                        <h3 data-lang-key="techAITitle">Adaptive Emotional AI</h3>
-                        <p data-lang-key="techAIDesc">Artificial intelligence systems that evolve and learn, creating unique
-                            personalities and genuine relationships.</p>
-                    </div>
-                </div>
-            </div>
+      <div class="container">
+        <p class="eyebrow reveal" data-lang-key="techEyebrow">Deep tech stack · 03</p>
+        <h2 class="reveal" data-lang-key="techTitle">Revolutionary Technologies</h2>
+        <p class="section-sub reveal" data-lang-key="techSub">Four systems. One living world that listens, feels and remembers.</p>
+        <div class="bento">
+          <article class="tech-card beam spot reveal" data-tilt>
+            <span class="card-tag" data-lang-key="tagFlagship">Flagship</span>
+            <div class="tech-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8.5A2.5 2.5 0 0 1 5.5 6h3L12 3l3.5 3h3A2.5 2.5 0 0 1 21 8.5v6a2.5 2.5 0 0 1-2.5 2.5h-3L12 20l-3.5-3h-3A2.5 2.5 0 0 1 3 14.5v-6Z"/><circle cx="9" cy="11.5" r="1.4"/><circle cx="15" cy="11.5" r="1.4"/></svg></div>
+            <h3 data-lang-key="techXRTitle">Extended Reality (XR)</h3>
+            <p data-lang-key="techXRDesc">Immersive environments combining virtual, augmented, and mixed reality to create completely convincing visual and spatial experiences.</p>
+            <span class="card-glow" aria-hidden="true"></span>
+          </article>
+          <article class="tech-card glass spot reveal" data-tilt>
+            <div class="tech-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7.5-4.6-7.5-10.5A4.5 4.5 0 0 1 12 7a4.5 4.5 0 0 1 7.5 3.5C19.5 16.4 12 21 12 21Z"/><path d="M12 7v6M9.5 10.5h5"/></svg></div>
+            <h3 data-lang-key="techHapticTitle">Emotional Haptics</h3>
+            <p data-lang-key="techHapticDesc">Advanced tactile technology that simulates real physical sensations, from the first hug to the most intimate moments of connection.</p>
+          </article>
+          <article class="tech-card glass spot reveal" data-tilt>
+            <div class="tech-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 3h6M10 3v5L4.5 18a2 2 0 0 0 1.8 3h11.4a2 2 0 0 0 1.8-3L14 8V3"/><path d="M7.5 14h9"/></svg></div>
+            <h3 data-lang-key="techBCITitle">Brain-Computer Interface (BCI)</h3>
+            <p data-lang-key="techBCIDesc">Direct connection between thoughts and experience, allowing authentic and natural emotional responses.</p>
+          </article>
+          <article class="tech-card glass spot reveal" data-tilt>
+            <div class="tech-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="7" y="7" width="10" height="10" rx="2"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg></div>
+            <h3 data-lang-key="techAITitle">Adaptive Emotional AI</h3>
+            <p data-lang-key="techAIDesc">Artificial intelligence systems that evolve and learn, creating unique personalities and genuine relationships.</p>
+          </article>
         </div>
+      </div>
     </section>
 
-    <!-- Testimonial Section -->
-    <section id="testimonial" class="section">
-        <div class="container">
-            <div class="testimonial">
-                <blockquote data-lang-key="testimonialQuote">
-                    "I've learned that even amidst uncertainty, there's always room for hope. This idea I share with you
-                    stems from an intimate truth: the deep longing to experience, even if only in memory and feeling,
-                    what life didn't allow me to experience naturally.
-
-                    Being able to approach—even through an idea or a simulation—what it means to be a biological
-                    parent, is a powerful possibility. Not just for me, but for so many people who, for various reasons,
-                    couldn't experience that in a traditional way.
-
-                    What you are about to see is not just a project; it's a bridge to a universal emotion. Thank you for
-                    lending your gaze and sensibility."
-                </blockquote>
-                <cite data-lang-key="testimonialCite">— URCG, Founder</cite>
-            </div>
-        </div>
+    <!-- STORY -->
+    <section id="story" class="section">
+      <div class="container">
+        <p class="eyebrow reveal" data-lang-key="storyEyebrow">Founder's note · 04</p>
+        <figure class="testimonial glass beam reveal">
+          <blockquote data-lang-key="testimonialQuote">"I've learned that even amidst uncertainty, there's always room for hope. This idea I share with you stems from an intimate truth: the deep longing to experience, even if only in memory and feeling, what life didn't allow me to experience naturally. Being able to approach — even through an idea or a simulation — what it means to be a biological parent, is a powerful possibility. Not just for me, but for so many people who, for various reasons, couldn't experience that in a traditional way. What you are about to see is not just a project; it's a bridge to a universal emotion. Thank you for lending your gaze and sensibility."</blockquote>
+          <figcaption><span class="avatar-initials" aria-hidden="true">UR</span><cite data-lang-key="testimonialCite">— URCG, Founder</cite></figcaption>
+        </figure>
+      </div>
     </section>
-    
-    <!-- Gallery Section -->
+
+    <!-- GALLERY -->
     <section id="gallery" class="section">
-        <div class="container">
-            <h2 data-lang-key="galleryTitle">Conceptual Description</h2>
-            <p data-lang-key="gallerySubtitle">A glimpse into the visual and emotional world of Living Legacy. Use the
-                controls to navigate.</p>
-            <div class="gallery-container">
-                <div class="gallery-slider">
-                    <div class="gallery-slide"><img src="https://static.wixstatic.com/media/af3a4a_115ae82e0af44dab8892c6d92105f87d~mv2.png" alt="Conceptual Art 1"></div>
-                    <div class="gallery-slide"><img src="https://static.wixstatic.com/media/af3a4a_3eef3cfaebd040968d2057acff7aa7b1~mv2.png" alt="Conceptual Art 2"></div>
-                    <div class="gallery-slide"><img src="https://static.wixstatic.com/media/af3a4a_f25efc019278426981fa2887eb300e02~mv2.png" alt="Conceptual Art 3"></div>
-                    <div class="gallery-slide"><img src="https://static.wixstatic.com/media/af3a4a_88c80e3a12b348858038011ef02af08c~mv2.png" alt="Conceptual Art 4"></div>
-                    <div class="gallery-slide"><img src="https://static.wixstatic.com/media/af3a4a_6fa745034baa4658be0a7569d959a45f~mv2.png" alt="Conceptual Art 5"></div>
-                    <div class="gallery-slide"><img src="https://static.wixstatic.com/media/af3a4a_39fe3019748147e5be28540b2c326ea6~mv2.png" alt="Conceptual Art 6"></div>
-                    <div class="gallery-slide"><img src="https://static.wixstatic.com/media/af3a4a_a78c0f5522f04d97911c203e3279899f~mv2.png" alt="Conceptual Art 7"></div>
-                    <div class="gallery-slide"><img src="https://static.wixstatic.com/media/af3a4a_43d86f48ed3b4164b72041418e3eaf33~mv2.png" alt="Conceptual Art 8"></div>
-                    <div class="gallery-slide"><img src="https://static.wixstatic.com/media/af3a4a_fa018a3bcabc40d5844ffbb935df5685~mv2.png" alt="Conceptual Art 9"></div>
-                </div>
-                <div class="gallery-nav">
-                    <button class="gallery-button prev-btn">☚</button>
-                    <button class="gallery-button next-btn">☛</button>
-                </div>
+      <div class="container">
+        <p class="eyebrow reveal" data-lang-key="galleryEyebrow">Visual world · 05</p>
+        <h2 class="reveal" data-lang-key="galleryTitle">Conceptual Description</h2>
+        <p class="section-sub reveal" data-lang-key="gallerySubtitle">A glimpse into the visual and emotional world of Living Legacy. Use the controls to navigate.</p>
+        <div class="gallery-shell glass reveal">
+          <div class="gallery-viewport">
+            <div class="gallery-slider" id="gallerySlider">
+              <div class="gallery-slide"><img src="https://static.wixstatic.com/media/af3a4a_115ae82e0af44dab8892c6d92105f87d~mv2.png" alt="Conceptual Art 1" loading="lazy" /></div>
+              <div class="gallery-slide"><img src="https://static.wixstatic.com/media/af3a4a_3eef3cfaebd040968d2057acff7aa7b1~mv2.png" alt="Conceptual Art 2" loading="lazy" /></div>
+              <div class="gallery-slide"><img src="https://static.wixstatic.com/media/af3a4a_f25efc019278426981fa2887eb300e02~mv2.png" alt="Conceptual Art 3" loading="lazy" /></div>
+              <div class="gallery-slide"><img src="https://static.wixstatic.com/media/af3a4a_88c80e3a12b348858038011ef02af08c~mv2.png" alt="Conceptual Art 4" loading="lazy" /></div>
+              <div class="gallery-slide"><img src="https://static.wixstatic.com/media/af3a4a_6fa745034baa4658be0a7569d959a45f~mv2.png" alt="Conceptual Art 5" loading="lazy" /></div>
+              <div class="gallery-slide"><img src="https://static.wixstatic.com/media/af3a4a_39fe3019748147e5be28540b2c326ea6~mv2.png" alt="Conceptual Art 6" loading="lazy" /></div>
+              <div class="gallery-slide"><img src="https://static.wixstatic.com/media/af3a4a_a78c0f5522f04d97911c203e3279899f~mv2.png" alt="Conceptual Art 7" loading="lazy" /></div>
+              <div class="gallery-slide"><img src="https://static.wixstatic.com/media/af3a4a_43d86f48ed3b4164b72041418e3eaf33~mv2.png" alt="Conceptual Art 8" loading="lazy" /></div>
+              <div class="gallery-slide"><img src="https://static.wixstatic.com/media/af3a4a_fa018a3bcabc40d5844ffbb935df5685~mv2.png" alt="Conceptual Art 9" loading="lazy" /></div>
             </div>
+          </div>
+          <div class="gallery-bar">
+            <button class="gbtn prev-btn" aria-label="Previous image">‹</button>
+            <div class="dots" id="galleryDots" role="tablist" aria-label="Gallery pages"></div>
+            <span class="counter" id="galleryCounter">01 / 09</span>
+            <button class="gbtn next-btn" aria-label="Next image">›</button>
+          </div>
         </div>
+      </div>
     </section>
 
-    <!-- FAQ Section -->
+    <!-- FAQ -->
     <section id="faq" class="section">
-        <div class="container">
-            <h2 data-lang-key="faqTitle">Frequently Asked Questions</h2>
-            <div class="faq-grid">
-                <div class="faq-item">
-                    <h3 data-lang-key="faqQ1">What is Living Legacy exactly?</h3>
-                    <p data-lang-key="faqA1">Living Legacy is a conceptual project that aims to create an immersive simulation of parenthood for those who could not have children. It uses a combination of XR, emotional AI, haptics, and BCI to create a deeply personal and emotional journey.</p>
-                </div>
-                <div class="faq-item">
-                    <h3 data-lang-key="faqQ2">Is this a real product?</h3>
-                    <p data-lang-key="faqA2">Currently, Living Legacy is a conceptual vision. The technologies involved are on the cutting edge, and this project serves as a north star for what could be possible in the future of human-computer interaction and emotional simulation.</p>
-                </div>
-                <div class="faq-item">
-                    <h3 data-lang-key="faqQ3">How can I support this vision?</h3>
-                    <p data-lang-key="faqA3">You can support the research and development behind this vision by contributing through the donation options below. Every bit of support helps us explore these groundbreaking technologies.</p>
-                </div>
-                 <div class="faq-item">
-                    <h3 data-lang-key="faqQ4">Who is behind this project?</h3>
-                    <p data-lang-key="faqA4">This conceptual project is led by U.R.C.G under the banner of NeuroVance Synthara Technologies, focusing on the intersection of neuroscience, AI, and immersive experiences.</p>
-                </div>
-            </div>
+      <div class="container narrow">
+        <p class="eyebrow reveal" data-lang-key="faqEyebrow">Questions · 06</p>
+        <h2 class="reveal" data-lang-key="faqTitle">Frequently Asked Questions</h2>
+        <div class="accordion reveal">
+          <div class="acc-item glass"><button class="acc-btn" aria-expanded="false"><span data-lang-key="faqQ1">What is Living Legacy exactly?</span><i class="fa-solid fa-plus" aria-hidden="true"></i></button><div class="acc-panel"><p data-lang-key="faqA1">Living Legacy is a conceptual project that aims to create an immersive simulation of parenthood for those who could not have children. It uses a combination of XR, emotional AI, haptics, and BCI to create a deeply personal and emotional journey.</p></div></div>
+          <div class="acc-item glass"><button class="acc-btn" aria-expanded="false"><span data-lang-key="faqQ2">Is this a real product?</span><i class="fa-solid fa-plus" aria-hidden="true"></i></button><div class="acc-panel"><p data-lang-key="faqA2">Currently, Living Legacy is a conceptual vision. The technologies involved are on the cutting edge, and this project serves as a north star for what could be possible in the future of human-computer interaction and emotional simulation.</p></div></div>
+          <div class="acc-item glass"><button class="acc-btn" aria-expanded="false"><span data-lang-key="faqQ3">How can I support this vision?</span><i class="fa-solid fa-plus" aria-hidden="true"></i></button><div class="acc-panel"><p data-lang-key="faqA3">You can support the research and development behind this vision by contributing through the donation options below. Every bit of support helps us explore these groundbreaking technologies.</p></div></div>
+          <div class="acc-item glass"><button class="acc-btn" aria-expanded="false"><span data-lang-key="faqQ4">Who is behind this project?</span><i class="fa-solid fa-plus" aria-hidden="true"></i></button><div class="acc-panel"><p data-lang-key="faqA4">This conceptual project is led by U.R.C.G under the banner of NeuroVance Synthara Technologies, focusing on the intersection of neuroscience, AI, and immersive experiences.</p></div></div>
         </div>
+      </div>
     </section>
 
-    <!-- ======== SECCIÓN DE DONACIÓN UNIFICADA (VERSIÓN FINAL) ======== -->
+    <!-- SUPPORT -->
     <section id="support" class="section">
-        <div class="container">
-            <h2 data-lang-key="supportTitle">Support the Project</h2>
-            <p data-lang-key="supportSubtitle">Your contribution helps build the future of human experience. Please choose your preferred donation method below.</p>
-            
-            <div class="donation-buttons-container">
-                <!-- Botón de Criptomonedas (abre modal) -->
-                <a href="https://commerce.coinbase.com/checkout/43bcf3ce-9e2e-4e7d-b03c-5a17b060420d" class="cta-button buy-with-crypto" target="_blank" data-lang-key="cryptoButton">Donate with Crypto</a>
-
-                <!-- Botón de PayPal (abre nueva pestaña) -->
-                <a href="https://www.paypal.com/donate?campaign_id=2JEKJ9LJN24KW" class="cta-button" target="_blank" data-lang-key="paypalButton">PayPal/Debit/Credit</a>
-            </div>
+      <div class="container">
+        <p class="eyebrow reveal" data-lang-key="supportEyebrow">Join us · 07</p>
+        <h2 class="reveal" data-lang-key="supportTitle">Support the Project</h2>
+        <p class="section-sub reveal" data-lang-key="supportSubtitle">Your contribution helps build the future of human experience. Please choose your preferred donation method below.</p>
+        <div class="donate-grid">
+          <a href="https://commerce.coinbase.com/checkout/43bcf3ce-9e2e-4e7d-b03c-5a17b060420d" target="_blank" rel="noopener" class="donate-card beam magnetic shine reveal" data-tilt>
+            <i class="fa-brands fa-bitcoin" aria-hidden="true"></i>
+            <div><h3 data-lang-key="cryptoTitle">Crypto</h3><p data-lang-key="cryptoDesc">BTC · ETH · USDC via Coinbase Commerce</p><span class="btn btn-primary btn-sm" data-lang-key="cryptoButton">Donate with Crypto</span></div>
+          </a>
+          <a href="https://www.paypal.com/donate?campaign_id=2JEKJ9LJN24KW" target="_blank" rel="noopener" class="donate-card glass spot magnetic reveal" data-tilt>
+            <i class="fa-brands fa-paypal" aria-hidden="true"></i>
+            <div><h3 data-lang-key="paypalTitle">Card &amp; PayPal</h3><p data-lang-key="paypalDesc">Debit, credit or PayPal balance</p><span class="btn btn-ghost btn-sm" data-lang-key="paypalButton">PayPal/Debit/Credit</span></div>
+          </a>
         </div>
+        <ul class="trust-row reveal">
+          <li><i class="fa-solid fa-flask" aria-hidden="true"></i><span data-lang-key="trust1">Funds go to R&amp;D exploration</span></li>
+          <li><i class="fa-solid fa-shield-halved" aria-hidden="true"></i><span data-lang-key="trust2">Secure checkout providers</span></li>
+          <li><i class="fa-solid fa-lightbulb" aria-hidden="true"></i><span data-lang-key="trust3">Concept-stage, honest roadmap</span></li>
+        </ul>
+      </div>
     </section>
-    <!-- ======== FIN DE LA SECCIÓN DE DONACIÓN ======== -->
+  </main>
 
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <p class="brand-line"><strong>NeuroVance Synthara Technologies</strong></p>
+        <p data-lang-key="footerText1">Conceptual project by <strong>U.R.C.G</strong> — NeuroVance Synthara Technologies</p>
+      </div>
+      <div class="social-links">
+        <a href="mailto:neurovancest@outlook.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+        <a href="https://wa.me/+16615099492" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://www.linkedin.com/company/108065309" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://youtube.com/@neurovancesyntharatechnologies?si=1p5vBtRT6L71P9-l" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+      </div>
+      <div class="footer-meta">
+        <p data-lang-key="footerText2">© 2025 Living Legacy. All rights reserved.</p>
+        <button class="to-top" id="toTop" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+      </div>
+    </div>
+  </footer>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p data-lang-key="footerText1">Conceptual project by <strong>U.R.C.G</strong> — NeuroVance Synthara
-                Technologies</p>
-            <div class="social-links">
-                <a href="mailto:neurovancest@outlook.com" target="_blank"><i class="fas fa-envelope"></i></a>
-                <a href="https://wa.me/+16615099492" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                <a href="https://www.linkedin.com/company/108065309" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://www.linkedin.com/company/108065309" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="https://youtube.com/@neurovancesyntharatechnologies?si=1p5vBtRT6L71P9-l" target="_blank"><i class="fab fa-youtube"></i></a>
-                <a href="https://www.linkedin.com/company/108065309" target="_blank"><i class="fab fa-tiktok"></i></a>
-                <a href="https://www.linkedin.com/company/108065309" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-            </div>
-            <p style="margin-top: 2rem; opacity: 0.5; font-size: 0.9rem;" data-lang-key="footerText2">
-                © 2025 Copyright Living Legacy. All rights reserved.
-            </p>
-            
-        </div>
-    </footer>
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-label="Image viewer">
+    <button class="lb-close" id="lbClose" aria-label="Close">✕</button>
+    <img id="lbImg" alt="" />
+  </div>
 
-    <!-- SCRIPT DE COINBASE COMMERCE - ESENCIAL PARA LA VENTANA EMERGENTE -->
-    <script src="https://commerce.coinbase.com/v1/checkout.js?version=201807"></script>
-    <script src="script.js"></script>
-    
+  <script src="https://commerce.coinbase.com/v1/checkout.js?version=201807"></script>
+  <script src="script.js"></script>
 </body>
 </html>
