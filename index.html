@@ -7,25 +7,46 @@
   <meta name="description" content="An immersive experience to feel the parenthood that never was, using XR, emotional AI, advanced haptics, and BCI" data-lang-key="metaDescription" />
   <meta name="keywords" content="extended reality, XR, virtual parenthood, emotional AI, immersive technology, BCI, haptics, NeuroVance" data-lang-key="metaKeywords" />
   <meta name="author" content="Ulises R. C. G. — NeuroVance Synthara Technologies" />
-  <meta name="theme-color" content="#05060f" />
+  <meta name="theme-color" content="#04050c" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Living Legacy — Immersive Parenthood Experience" />
   <meta property="og:description" content="XR · Emotional AI · Haptics · BCI. A multi-sensory journey from birth to 18 years." />
   <meta property="og:image" content="https://static.wixstatic.com/media/af3a4a_e11177e185b147a9a3f5b90233c5c782~mv2.png" />
   <meta name="twitter:card" content="summary_large_image" />
-
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="icon" href="https://static.wixstatic.com/ficons/af3a4a_6173983436864e2db944f72f25def6ec~mv2.ico" type="image/x-icon" />
   <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
 </head>
-<body>
+<body class="pro-body">
   <a class="skip-link" href="#main" data-lang-key="skipLink">Skip to content</a>
   <div class="scroll-progress" aria-hidden="true"></div>
 
-  <!-- Ambient tech background: aurora + neural canvas + grain -->
-  <div class="ambient" aria-hidden="true">
+  <!-- PRO preloader -->
+  <div id="preloader" aria-hidden="true">
+    <div class="pre-inner">
+      <div class="pre-logo">NEUROVANCE <span>SYNTHARA</span></div>
+      <div class="pre-count"><span id="preNum">00</span><em>/ 100</em></div>
+      <div class="pre-bar"><span id="preBar"></span></div>
+      <div class="pre-sub">CALIBRATING NEURAL SPACE · XR · BCI · HAPTICS</div>
+    </div>
+    <div class="pre-curtain left"></div>
+    <div class="pre-curtain right"></div>
+  </div>
+
+  <div id="cursor-dot" aria-hidden="true"></div>
+  <div id="cursor-ring" aria-hidden="true"></div>
+  <div class="vignette" aria-hidden="true"></div>
+
+  <!-- Cinematic WebGL stage -->
+  <div class="stage" aria-hidden="true">
+    <canvas id="webgl-immersive"></canvas>
+    <div class="stage-fog"></div>
     <div class="aurora aurora-a"></div>
     <div class="aurora aurora-b"></div>
     <div class="aurora aurora-c"></div>
@@ -34,7 +55,6 @@
     <div class="noise"></div>
   </div>
 
-  <!-- Sticky glass header -->
   <header class="site-header" id="siteHeader">
     <div class="container header-inner">
       <a href="#top" class="brand" aria-label="NeuroVance Synthara — Living Legacy">
@@ -68,51 +88,74 @@
   </header>
 
   <main id="main">
+    <nav class="journey-rail" aria-label="Journey">
+      <a href="#top" class="jr-dot is-active" data-jr="top"><span></span><em>00 · Origin</em></a>
+      <a href="#film" class="jr-dot" data-jr="film"><span></span><em>01 · Film</em></a>
+      <a href="#vision" class="jr-dot" data-jr="vision"><span></span><em>02 · Vision</em></a>
+      <a href="#technologies" class="jr-dot" data-jr="technologies"><span></span><em>03 · Tech</em></a>
+      <a href="#faq" class="jr-dot" data-jr="faq"><span></span><em>04 · FAQ</em></a>
+      <a href="#support" class="jr-dot" data-jr="support"><span></span><em>05 · Join</em></a>
+    </nav>
+
     <!-- HERO -->
-    <section class="hero" id="top">
+    <section class="hero" id="top" data-theme="cyan" data-immersive>
+      <div class="hero-bg-word" aria-hidden="true">LEGACY</div>
       <div class="container hero-grid">
         <div class="hero-copy">
-          <p class="eyebrow reveal"><span class="pulse-dot" aria-hidden="true"></span><span data-lang-key="heroBadge">Concept · XR · Emotional AI · BCI</span></p>
-          <h1 class="reveal" data-lang-key="heroTitle">LIVING LEGACY</h1>
+          <p class="eyebrow"><span class="pulse-dot" aria-hidden="true"></span><span data-lang-key="heroBadge">Concept · XR · Emotional AI · BCI</span></p>
+          <h1 class="hero-title" id="heroTitle" data-lang-key="heroTitle" data-split>LIVING LEGACY</h1>
           <p class="hero-subtitle" id="heroSubtitle" data-lang-key="heroSubtitle">An immersive experience to feel the parenthood that never was.</p>
-          <div class="hero-ctas reveal">
+          <div class="hero-ctas">
             <a href="#vision" class="btn btn-primary magnetic shine" data-lang-key="exploreButton">Explore Vision<i class="fa-solid fa-arrow-down" aria-hidden="true"></i></a>
             <button class="btn btn-ghost magnetic" data-scroll-to="#film" data-lang-key="watchButton"><i class="fa-solid fa-play" aria-hidden="true"></i>Watch the film</button>
           </div>
-        </div>
-        <div class="hero-visual reveal">
-          <div class="avatar-ring" aria-hidden="true"><span></span></div>
-          <div class="hero-avatar">
-            <div class="hero-avatar-inner">
-              <img src="https://static.wixstatic.com/media/af3a4a_e11177e185b147a9a3f5b90233c5c782~mv2.png" alt="Living Legacy emblem" fetchpriority="high" />
-            </div>
+          <div class="hero-stats">
+            <div><strong><span data-count="18">0</span><em>yrs</em></strong><span>simulated arc</span></div>
+            <div><strong><span data-count="4">0</span><em>sys</em></strong><span>deep-tech stack</span></div>
+            <div><strong>∞</strong><span>emotional memory</span></div>
           </div>
-          <div class="orbit-chip chip-a glass"><i class="fa-solid fa-vr-cardboard"></i><span>XR</span></div>
-          <div class="orbit-chip chip-b glass"><i class="fa-solid fa-brain"></i><span>BCI</span></div>
+        </div>
+        <div class="hero-visual" id="heroVisual">
+          <div class="holo-ring r1" aria-hidden="true"></div>
+          <div class="holo-ring r2" aria-hidden="true"></div>
+          <div class="holo-ring r3" aria-hidden="true"></div>
+          <div class="hero-core">
+            <div class="core-glow" aria-hidden="true"></div>
+            <img src="https://static.wixstatic.com/media/af3a4a_e11177e185b147a9a3f5b90233c5c782~mv2.png" alt="Living Legacy emblem" fetchpriority="high" />
+            <div class="scanline" aria-hidden="true"></div>
+          </div>
+          <div class="orbit-chip chip-a glass"><i class="fa-solid fa-vr-cardboard"></i><span>XR · 120° FOV</span></div>
+          <div class="orbit-chip chip-b glass"><i class="fa-solid fa-brain"></i><span>BCI · Neural</span></div>
           <div class="orbit-chip chip-c glass"><i class="fa-solid fa-hand-holding-heart"></i><span data-lang-key="chipHaptics">Haptics</span></div>
-          <div class="orbit-chip chip-d glass"><i class="fa-solid fa-microchip"></i><span>AI</span></div>
+          <div class="orbit-chip chip-d glass"><i class="fa-solid fa-microchip"></i><span>AI · Adaptive</span></div>
         </div>
       </div>
-      <a class="scroll-hint" href="#film" aria-label="Scroll down"><span></span></a>
-      <div class="ticker" aria-hidden="true">
-        <div class="ticker-track">
-          <span>Extended Reality</span><i>◆</i><span>Brain-Computer Interface</span><i>◆</i><span>Emotional Haptics</span><i>◆</i><span>Adaptive AI</span><i>◆</i><span>Spatial Computing</span><i>◆</i><span>Multisensory Simulation</span><i>◆</i>
-          <span>Extended Reality</span><i>◆</i><span>Brain-Computer Interface</span><i>◆</i><span>Emotional Haptics</span><i>◆</i><span>Adaptive AI</span><i>◆</i><span>Spatial Computing</span><i>◆</i><span>Multisensory Simulation</span><i>◆</i>
+      <div class="hero-bottom">
+        <a class="scroll-hint" href="#film" aria-label="Scroll down"><span></span></a>
+        <div class="ticker" aria-hidden="true">
+          <div class="ticker-track">
+            <span>Extended Reality</span><i>◆</i><span>Brain-Computer Interface</span><i>◆</i><span>Emotional Haptics</span><i>◆</i><span>Adaptive AI</span><i>◆</i><span>Spatial Computing</span><i>◆</i><span>Multisensory Simulation</span><i>◆</i>
+            <span>Extended Reality</span><i>◆</i><span>Brain-Computer Interface</span><i>◆</i><span>Emotional Haptics</span><i>◆</i><span>Adaptive AI</span><i>◆</i><span>Spatial Computing</span><i>◆</i><span>Multisensory Simulation</span><i>◆</i>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- FILM -->
-    <section class="section" id="film">
+    <section class="section" id="film" data-theme="cyan" data-immersive>
       <div class="container">
-        <p class="eyebrow reveal" data-lang-key="filmEyebrow">The film · 01</p>
-        <h2 class="reveal" data-lang-key="filmTitle">Discover the future of human experience</h2>
-        <div class="video-shell glass reveal">
+        <div class="sec-head">
+          <p class="eyebrow" data-lang-key="filmEyebrow">The film · 01</p>
+          <h2 data-lang-key="filmTitle">Discover the future of human experience</h2>
+          <span class="sec-line"><span></span></span>
+        </div>
+        <div class="video-shell glass" data-tilt>
+          <div class="video-glow" aria-hidden="true"></div>
           <div class="video-frame frame-landscape">
             <video controls preload="metadata" playsinline src="https://res.cloudinary.com/drniuzbh4/video/upload/v1789065611/NVST_Comercial_coming_soon_j6nwr6.mp4"></video>
           </div>
           <div class="video-meta">
-            <span><i class="fa-solid fa-clapperboard"></i> NVST</span>
+            <span><i class="fa-solid fa-clapperboard"></i> NVST · 4K SPATIAL</span>
             <span data-lang-key="filmMeta">Official spot · coming soon</span>
           </div>
         </div>
@@ -120,59 +163,81 @@
     </section>
 
     <!-- VISION -->
-    <section id="vision" class="section">
+    <section id="vision" class="section" data-theme="violet" data-immersive>
       <div class="container">
-        <p class="eyebrow reveal" data-lang-key="visionEyebrow">The vision · 02</p>
-        <h2 class="reveal" data-lang-key="visionTitle">The Vision</h2>
-        <p class="lead reveal" data-lang-key="visionParagraph1">For those who couldn't have children, we offer a way to explore what could have been. A multi-sensory simulation from birth to 18 years, where the most advanced technology meets the deepest emotionality.</p>
-        <p class="lead lead-dim reveal" data-lang-key="visionParagraph2">Living Legacy is not just a simulation; it's a bridge to understanding parenthood, human connection, and the meaning of leaving a mark on a life.</p>
+        <div class="sec-head">
+          <p class="eyebrow" data-lang-key="visionEyebrow">The vision · 02</p>
+          <h2 data-lang-key="visionTitle">The Vision</h2>
+          <span class="sec-line"><span></span></span>
+        </div>
+        <p class="lead" data-lang-key="visionParagraph1">For those who couldn't have children, we offer a way to explore what could have been. A multi-sensory simulation from birth to 18 years, where the most advanced technology meets the deepest emotionality.</p>
+        <p class="lead lead-dim" data-lang-key="visionParagraph2">Living Legacy is not just a simulation; it's a bridge to understanding parenthood, human connection, and the meaning of leaving a mark on a life.</p>
         <div class="vision-points">
-          <div class="vpoint glass spot reveal" data-tilt><i class="fa-solid fa-wave-square"></i><div><h3 data-lang-key="vp1t">Multi-sensory</h3><p data-lang-key="vp1d">Sight, sound, touch and emotion synchronized in one coherent world.</p></div></div>
-          <div class="vpoint glass spot reveal" data-tilt><i class="fa-solid fa-timeline"></i><div><h3 data-lang-key="vp2t">Birth to 18</h3><p data-lang-key="vp2d">A continuous arc — first steps, first words, growing up together.</p></div></div>
-          <div class="vpoint glass spot reveal" data-tilt><i class="fa-solid fa-heart-pulse"></i><div><h3 data-lang-key="vp3t">Emotional bridge</h3><p data-lang-key="vp3d">Technology in service of empathy, memory and hope.</p></div></div>
+          <div class="vpoint glass spot" data-tilt><i class="fa-solid fa-wave-square"></i><div><h3 data-lang-key="vp1t">Multi-sensory</h3><p data-lang-key="vp1d">Sight, sound, touch and emotion synchronized in one coherent world.</p></div><span class="card-num">01</span></div>
+          <div class="vpoint glass spot" data-tilt><i class="fa-solid fa-timeline"></i><div><h3 data-lang-key="vp2t">Birth to 18</h3><p data-lang-key="vp2d">A continuous arc — first steps, first words, growing up together.</p></div><span class="card-num">02</span></div>
+          <div class="vpoint glass spot" data-tilt><i class="fa-solid fa-heart-pulse"></i><div><h3 data-lang-key="vp3t">Emotional bridge</h3><p data-lang-key="vp3d">Technology in service of empathy, memory and hope.</p></div><span class="card-num">03</span></div>
+        </div>
+        <div class="timeline-3d" aria-hidden="true">
+          <div class="tl-track"><div class="tl-fill" id="tlFill"></div><div class="tl-head" id="tlHead"></div></div>
+          <div class="tl-steps">
+            <span class="tl-step is-on">0 · Birth</span>
+            <span class="tl-step">5 · First words</span>
+            <span class="tl-step">10 · Discovery</span>
+            <span class="tl-step">15 · Identity</span>
+            <span class="tl-step">18 · Legacy</span>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- TECHNOLOGIES / BENTO -->
-    <section id="technologies" class="section">
+    <!-- TECHNOLOGIES -->
+    <section id="technologies" class="section" data-theme="magenta" data-immersive>
       <div class="container">
-        <p class="eyebrow reveal" data-lang-key="techEyebrow">Deep tech stack · 03</p>
-        <h2 class="reveal" data-lang-key="techTitle">Revolutionary Technologies</h2>
-        <p class="section-sub reveal" data-lang-key="techSub">Four systems. One living world that listens, feels and remembers.</p>
+        <div class="sec-head">
+          <p class="eyebrow" data-lang-key="techEyebrow">Deep tech stack · 03</p>
+          <h2 data-lang-key="techTitle">Revolutionary Technologies</h2>
+          <p class="section-sub" data-lang-key="techSub">Four systems. One living world that listens, feels and remembers.</p>
+          <span class="sec-line"><span></span></span>
+        </div>
         <div class="bento">
-          <article class="tech-card beam spot reveal" data-tilt>
+          <article class="tech-card beam spot" data-tilt>
             <span class="card-tag" data-lang-key="tagFlagship">Flagship</span>
             <div class="tech-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8.5A2.5 2.5 0 0 1 5.5 6h3L12 3l3.5 3h3A2.5 2.5 0 0 1 21 8.5v6a2.5 2.5 0 0 1-2.5 2.5h-3L12 20l-3.5-3h-3A2.5 2.5 0 0 1 3 14.5v-6Z"/><circle cx="9" cy="11.5" r="1.4"/><circle cx="15" cy="11.5" r="1.4"/></svg></div>
             <h3 data-lang-key="techXRTitle">Extended Reality (XR)</h3>
             <p data-lang-key="techXRDesc">Immersive environments combining virtual, augmented, and mixed reality to create completely convincing visual and spatial experiences.</p>
-            <span class="card-glow" aria-hidden="true"></span>
+            <span class="card-glow" aria-hidden="true"></span><span class="card-num">XR·01</span>
           </article>
-          <article class="tech-card glass spot reveal" data-tilt>
+          <article class="tech-card glass spot" data-tilt>
             <div class="tech-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7.5-4.6-7.5-10.5A4.5 4.5 0 0 1 12 7a4.5 4.5 0 0 1 7.5 3.5C19.5 16.4 12 21 12 21Z"/><path d="M12 7v6M9.5 10.5h5"/></svg></div>
             <h3 data-lang-key="techHapticTitle">Emotional Haptics</h3>
             <p data-lang-key="techHapticDesc">Advanced tactile technology that simulates real physical sensations, from the first hug to the most intimate moments of connection.</p>
+            <span class="card-num">HP·02</span>
           </article>
-          <article class="tech-card glass spot reveal" data-tilt>
+          <article class="tech-card glass spot" data-tilt>
             <div class="tech-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 3h6M10 3v5L4.5 18a2 2 0 0 0 1.8 3h11.4a2 2 0 0 0 1.8-3L14 8V3"/><path d="M7.5 14h9"/></svg></div>
             <h3 data-lang-key="techBCITitle">Brain-Computer Interface (BCI)</h3>
             <p data-lang-key="techBCIDesc">Direct connection between thoughts and experience, allowing authentic and natural emotional responses.</p>
+            <span class="card-num">BC·03</span>
           </article>
-          <article class="tech-card glass spot reveal" data-tilt>
+          <article class="tech-card glass spot" data-tilt>
             <div class="tech-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="7" y="7" width="10" height="10" rx="2"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg></div>
             <h3 data-lang-key="techAITitle">Adaptive Emotional AI</h3>
             <p data-lang-key="techAIDesc">Artificial intelligence systems that evolve and learn, creating unique personalities and genuine relationships.</p>
+            <span class="card-num">AI·04</span>
           </article>
         </div>
       </div>
     </section>
 
     <!-- FAQ -->
-    <section id="faq" class="section">
+    <section id="faq" class="section" data-theme="violet" data-immersive>
       <div class="container narrow">
-        <p class="eyebrow reveal" data-lang-key="faqEyebrow">Questions · 06</p>
-        <h2 class="reveal" data-lang-key="faqTitle">Frequently Asked Questions</h2>
-        <div class="accordion reveal">
+        <div class="sec-head">
+          <p class="eyebrow" data-lang-key="faqEyebrow">Questions · 06</p>
+          <h2 data-lang-key="faqTitle">Frequently Asked Questions</h2>
+          <span class="sec-line"><span></span></span>
+        </div>
+        <div class="accordion">
           <div class="acc-item glass"><button class="acc-btn" aria-expanded="false"><span data-lang-key="faqQ1">What is Living Legacy exactly?</span><i class="fa-solid fa-plus" aria-hidden="true"></i></button><div class="acc-panel"><p data-lang-key="faqA1">Living Legacy is a conceptual project that aims to create an immersive simulation of parenthood for those who could not have children. It uses a combination of XR, emotional AI, haptics, and BCI to create a deeply personal and emotional journey.</p></div></div>
           <div class="acc-item glass"><button class="acc-btn" aria-expanded="false"><span data-lang-key="faqQ2">Is this a real product?</span><i class="fa-solid fa-plus" aria-hidden="true"></i></button><div class="acc-panel"><p data-lang-key="faqA2">Currently, Living Legacy is a conceptual vision. The technologies involved are on the cutting edge, and this project serves as a north star for what could be possible in the future of human-computer interaction and emotional simulation.</p></div></div>
           <div class="acc-item glass"><button class="acc-btn" aria-expanded="false"><span data-lang-key="faqQ3">How can I support this vision?</span><i class="fa-solid fa-plus" aria-hidden="true"></i></button><div class="acc-panel"><p data-lang-key="faqA3">You can support the research and development behind this vision by contributing through the donation options below. Every bit of support helps us explore these groundbreaking technologies.</p></div></div>
@@ -182,31 +247,34 @@
     </section>
 
     <!-- SUPPORT -->
-    <section id="support" class="section">
+    <section id="support" class="section support-sec" data-theme="cyan" data-immersive>
       <div class="container">
-        <p class="eyebrow reveal" data-lang-key="supportEyebrow">Join us · 07</p>
-        <h2 class="reveal" data-lang-key="supportTitle">Support the Project</h2>
-        <p class="section-sub reveal" data-lang-key="supportSubtitle">Your contribution helps build the future of human experience. Please choose your preferred donation method below.</p>
+        <div class="sec-head">
+          <p class="eyebrow" data-lang-key="supportEyebrow">Join us · 07</p>
+          <h2 class="support-title" data-lang-key="supportTitle">Support the Project</h2>
+          <p class="section-sub" data-lang-key="supportSubtitle">Your contribution helps build the future of human experience. Please choose your preferred donation method below.</p>
+          <span class="sec-line"><span></span></span>
+        </div>
         <div class="donate-grid">
-          <a href="https://commerce.coinbase.com/checkout/43bcf3ce-9e2e-4e7d-b03c-5a17b060420d" target="_blank" rel="noopener" class="donate-card beam magnetic shine reveal" data-tilt>
+          <a href="https://commerce.coinbase.com/checkout/43bcf3ce-9e2e-4e7d-b03c-5a17b060420d" target="_blank" rel="noopener" class="donate-card beam magnetic shine" data-tilt>
             <i class="fa-brands fa-bitcoin" aria-hidden="true"></i>
             <div><h3 data-lang-key="cryptoTitle">Crypto</h3><p data-lang-key="cryptoDesc">BTC · ETH · USDC via Coinbase Commerce</p><span class="btn btn-primary btn-sm" data-lang-key="cryptoButton">Donate with Crypto</span></div>
           </a>
-          <a href="https://www.paypal.com/donate?campaign_id=2JEKJ9LJN24KW" target="_blank" rel="noopener" class="donate-card glass spot magnetic reveal" data-tilt>
+          <a href="https://www.paypal.com/donate?campaign_id=2JEKJ9LJN24KW" target="_blank" rel="noopener" class="donate-card glass spot magnetic" data-tilt>
             <i class="fa-brands fa-paypal" aria-hidden="true"></i>
             <div><h3 data-lang-key="paypalTitle">Card &amp; PayPal</h3><p data-lang-key="paypalDesc">Debit, credit or PayPal balance</p><span class="btn btn-ghost btn-sm" data-lang-key="paypalButton">PayPal/Debit/Credit</span></div>
           </a>
         </div>
-        <ul class="trust-row reveal">
+        <ul class="trust-row">
           <li><i class="fa-solid fa-flask" aria-hidden="true"></i><span data-lang-key="trust1">Funds go to R&amp;D exploration</span></li>
           <li><i class="fa-solid fa-shield-halved" aria-hidden="true"></i><span data-lang-key="trust2">Secure checkout providers</span></li>
           <li><i class="fa-solid fa-lightbulb" aria-hidden="true"></i><span data-lang-key="trust3">Concept-stage, honest roadmap</span></li>
         </ul>
+        <h3 class="giant-cta" aria-hidden="true">BIRTH — 18 — LEGACY</h3>
       </div>
     </section>
   </main>
 
-  <!-- FOOTER -->
   <footer class="footer">
     <div class="container footer-grid">
       <div>
@@ -226,7 +294,6 @@
     </div>
   </footer>
 
-  <!-- Founder note modal -->
   <div class="note-modal" id="noteModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="noteTitle">
     <div class="note-backdrop" data-close-note></div>
     <div class="note-card">
